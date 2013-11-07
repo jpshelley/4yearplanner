@@ -127,16 +127,32 @@
     	<h2>User</h2>
     	
     	<dl>
-    		<dt id="starter">first page</dt>
+    		<dt id="starter">User Info</dt>
     			<dd>
-				Add Classes here	   
+				Name: First Last
+				<br>
+				Add Classes here.	   
+    	  		</dd>
+			<dt id="major">Major Info</dt>
+    			<dd>
+				Major: 
+				<a href="http://www.se.iastate.edu/academics/resources/">Software Engineering</a>
+    	  		</dd>
+				
+			<dt id="completed">Completed Courses</dt>
+    			<dd>
+				Required Classes
+				<br><br>
+				Technical Electives
+				<br><br>
+				Supplemental Electives
     	  		</dd>
     	 </dl>
     </div>
 	<div class="info-col">
 		<h2>Classes</h2>
 		<dl>
-		  <dt>Year 1</dt>
+		  <dt>Fall 2010</dt>
               <dd>
               	<div id="year1">
               	<div id="content">
@@ -145,17 +161,33 @@
               	</div>
 
               </dd>
-		  <dt>Year 2</dt>
+		  <dt>Spring 2011</dt>
               <dd>
-                    info for year 2
+                info for semester 2
               </dd>
-		  <dt>Year 3</dt>
+		  <dt>Fall 2011</dt>
 		  	<dd>
-                info for year 3
+                info for semester 3
 		     </dd>
-        <dt>Year 4</dt>
+          <dt>Spring 2012</dt>
 		  	<dd>
-                info for year 4
+                info for semester 4
+		     </dd>
+		  <dt>Fall 2012</dt>
+		  	<dd>
+                info for semester 5
+		     </dd>
+		  <dt>Spring 2013</dt>
+		  	<dd>
+                info for semester 6
+		     </dd>
+		  <dt>Fall 2013</dt>
+		  	<dd>
+                info for semester 7
+		     </dd>
+		   <dt>Spring 2014</dt>
+		  	<dd>
+                info for semester 8
 		     </dd>
 		</dl>
 	
