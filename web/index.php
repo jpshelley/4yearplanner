@@ -55,6 +55,17 @@
 	        
 	    });
 	    
+		$("#wrap").delegate(".semesterBlock li", "click", function() {
+			var cla = $(this).attr("class");
+			if (cla != "selected" && cla != "complete")
+				$(this).addClass("selected");
+			else if (cla == "selected")
+			{
+				$(this).removeClass("selected");
+			}
+			return false;
+		});
+		
 	    // clicking on titles does stuff
 	    $("#wrap").delegate("dt", "click", function() {
 	        
@@ -108,7 +119,14 @@
 	        }
 	        
 	    });
-	    
+		
+		//for (var i=0; i<5; i++;) {
+		$('#sem1 ul').append("<li><span>COMS 141</span><span class=\"creds\">Credits: 4</span></li>");
+		$('#sem1 ul').append("<li class=\"complete\"><span>COMS 341</span><span class=\"creds\">Credits: 4</span></li>");
+		$('#sem1 ul').append("<li><span>COMS 441</span><span class=\"creds\">Credits: 4</span></li>");
+		
+		//}
+		
 	    $("#starter").trigger("click");
  
 	    
@@ -154,40 +172,68 @@
 		<dl>
 		  <dt>Fall 2010</dt>
               <dd>
-              	<div id="year1">
-              	<div id="content">
-              	
-              	</div>
+              	<div id="sem1" class="semesterBlock">
+              	<ul>
+				
+				</ul>
               	</div>
 
               </dd>
 		  <dt>Spring 2011</dt>
               <dd>
-                info for semester 2
+                <div id="sem2" class="semesterBlock">
+              	<ul>
+				
+				</ul>
+              	</div>
               </dd>
 		  <dt>Fall 2011</dt>
 		  	<dd>
-                info for semester 3
+              <div id="sem3" class="semesterBlock">
+              	<ul>
+				
+				</ul>
+              	</div>
 		     </dd>
           <dt>Spring 2012</dt>
 		  	<dd>
-                info for semester 4
+              <div id="sem4" class="semesterBlock">
+              	<ul>
+				
+				</ul>
+              	</div>
 		     </dd>
 		  <dt>Fall 2012</dt>
 		  	<dd>
-                info for semester 5
+              <div id="sem5" class="semesterBlock">
+              	<ul>
+				
+				</ul>
+              	</div>
 		     </dd>
 		  <dt>Spring 2013</dt>
 		  	<dd>
-                info for semester 6
+               <div id="sem6" class="semesterBlock">
+              	<ul>
+				
+				</ul>
+              	</div>
 		     </dd>
 		  <dt>Fall 2013</dt>
 		  	<dd>
-                info for semester 7
+              <div id="sem7" class="semesterBlock">
+              	<ul>
+				
+				</ul>
+              	</div>
 		     </dd>
 		   <dt>Spring 2014</dt>
 		  	<dd>
-                info for semester 8
+               <div id="sem8" class="semesterBlock">
+              	<ul>
+				
+				</ul>
+              	</div>
 		     </dd>
 		</dl>
 	
@@ -198,7 +244,7 @@
 <script>
 
 
-
+/*
 var xhr;
 if (window.XMLHttpRequest) xhr = new XMLHttpRequest();      // all browsers except IE
 else xhr = new ActiveXObject("Microsoft.XMLHTTP");      // for IE
@@ -217,7 +263,7 @@ xhr.onreadystatechange = function () {
     }
 }
 xhr.send();
-
+*/
 </script>
 
 

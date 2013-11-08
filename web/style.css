@@ -11,9 +11,45 @@ a:visited { color: #8FD8D8; }
 .image { height: 100px; text-indent: -9999px; display: block; border-right: 1px solid white; }
 
 dt { padding: 5px; background: #900; color: white; border-top: 1px solid white; border-right: 1px solid white; }
-dd { position: absolute; left: -9999px; top: -9999px; width: 879px; height: 400px; background: #900; padding: 10px; color: white; border-right: 1px solid white; overflow-y: scroll;
+dd { position: absolute; left: -9999px; top: -9999px; width: 879px; height: 160px; background: #900; padding: 10px; color: white; border-right: 1px solid white;
 }
 
+div.semesterBlock ul
+{
+	list-style-type: none;
+}
+div.semesterBlock li {
+	background-color: darkgray;
+	display: inline-block;
+	padding: 4px;
+	width: 120px;
+	height: 120px;
+	margin-right: 13px;
+	margin-top: 3px;
+	border-radius: 5px;
+	margin-left: 3px;
+}
+li:hover {
+	cursor: pointer;
+}
+li span {
+	display: block;
+	position: relative;
+}
+li span.creds {
+bottom: -84px;
+}
+li.selected {
+	margin-left: 0px !important;
+	margin-top: 0px !important;
+	margin-right: 10px !important;
+	border: 3px solid white;
+	border-radius: 6px;
+	background-color: lightgreen !important;
+}
+li.complete {
+	background-color: #003c00 !important;
+}
 dt:nth-of-type(1) { background: #b44835; }
 dd:nth-of-type(1) { background: #b44835; }
 
