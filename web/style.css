@@ -74,7 +74,14 @@ dd:nth-of-type(7) { background: #b44835; }
 dt:nth-of-type(8) { background: #4c443c; } /* new */
 dd:nth-of-type(8) { background: #4c443c; }
 
+#eleclist
+{
+	list-style-type: none;
+	padding: 0;
+}
+#eleclist li {
 
+}
 
 .curCol { -moz-box-shadow: 0 0 10px rgba(0,0,0,0.2); -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2); z-index: 1; position: relative;
 }
