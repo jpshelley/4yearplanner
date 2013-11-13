@@ -93,16 +93,14 @@ $(document).ready(function() {
 
 </script>
 </head>
-<body>
-
+<div class="arrow-left"></div>
 <ul id="suplist" class="eleclist" >
 
 </ul>
-<ul id="techlist" class="eleclist" >
+<!-- <ul id="techlist" class="eleclist" >
 
 </ul>
 <ul id="genlist" class="eleclist" >
 
-</ul>
-</body>
+</ul> -->
 </html>

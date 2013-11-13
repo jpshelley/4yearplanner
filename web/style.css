@@ -1,5 +1,5 @@
 * { margin: 0; padding: 0; }
-html, body { height: 100%; overflow: hidden; background: #ffffcc; } /*Previously b8c85e*/
+/*html, body { height: 100%; overflow: hidden; background: #ffffcc; } Previously b8c85e*/
 body { font: 14px Georgia, serif; }
 #wrap { width: 85%; padding: 0 0 0 15px; margin: 0 auto; overflow: hidden; height: 100%; }
 
@@ -28,6 +28,7 @@ div.semesterBlock li {
 	margin-top: 3px;
 	border-radius: 5px;
 	margin-left: 3px;
+	z-index: 5;
 }
 li:hover {
 	cursor: pointer;
@@ -74,18 +75,45 @@ dd:nth-of-type(7) { background: #b44835; }
 dt:nth-of-type(8) { background: #4c443c; } /* new */
 dd:nth-of-type(8) { background: #4c443c; }
 
-#eleclist
+.eleclist
 {
 	list-style-type: none;
 	padding: 0;
+	position: absolute;
+	left: 10px;
+	background-color: #ffffcc;
 }
-#eleclist li {
-
+.eleclist li {
+	display: block;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 4px;
+	height: 25px;
 }
-
+.eleclist li:hover {
+	background-color: #cccca3;
+}
+.arrow-left {
+	top: 50px;
+	width: 0; 
+	height: 0; 
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent; 
+	position: absolute;
+	border-right:10px solid #ffffcc; 
+}
 .curCol { -moz-box-shadow: 0 0 10px rgba(0,0,0,0.2); -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2); z-index: 1; position: relative;
 }
-
+#electivedialog {
+	z-index: 4;
+	-webkit-box-shadow: 4px 4px 5px rgba(60, 60, 60, 0.9);
+-moz-box-shadow:    4px 4px 5px rgba(60, 60, 60, 0.9);
+box-shadow:         4px 4px 5px rgba(60, 60, 60, 0.9);
+width: 167px;
+position: absolute;
+display: inline-block;
+height: 204px;
+}
 #post-wrap{
 	width: 100%;
 	height: 100px;

@@ -54,10 +54,45 @@
 	        } 
 	        
 	    });
-	    
+	    var $activeelec;
 		$("#wrap").delegate(".semesterBlock li", "click", function() {
 			var cla = $(this).attr("class");
-			if (cla != "selected" && cla != "complete")
+			if (cla == "elective") {
+				$activeelec = $(this);			
+				var position = $(this).offset();
+				var left = position.left + 107;
+				$("#electivedialog").css({
+					top: position.top+"px",
+					left: left+"px"
+				}).animate({opacity:1,left: "+=30px"}, 100);
+				$("#electivedialog li").bind("click", function() {
+					var ctext = $(this).text().split("::");
+					$activeelec.children().eq(0).text(ctext[0]);
+					$activeelec.children().eq(1).text("Credits: " + ctext[1].charAt(1));
+					$("#electivedialog").animate({opacity:0, left: "-=30px"}, 50);
+					setTimeout(function() {
+						$("#electivedialog").css({
+							top: "0px",
+							left: "0px"
+						});
+					}, 100);
+					$("#electivedialog li").unbind();
+				});
+				$("#electivedialog").bind("mouseenter", function() {
+					$("#electivedialog").bind("mouseleave", function() {
+						$("#electivedialog").animate({opacity:0, left: "-=30px"}, 50);
+						setTimeout(function() {
+							$("#electivedialog").css({
+								top: "0px",
+								left: "0px"
+							});
+						}, 100);
+						$("#electivedialog").unbind();
+						$("#electivedialog li").unbind();
+					});
+				});
+			}
+			else if (cla != "selected" && cla != "complete")
 				$(this).addClass("selected");
 			else if (cla == "selected")
 			{
@@ -71,7 +106,13 @@
 	        
 	        // cache this, as always, is good form
 	        $el = $(this);
-	        
+	        $("#electivedialog").animate({opacity:0, left: "-=30px"}, 50);
+			setTimeout(function() {
+				$("#electivedialog").css({
+					top: "0px",
+					left: "0px"
+				});
+			}, 100);
 	        // if this is already the active cell, don't do anything
 	        if (!$el.hasClass("current")) {
 	        
@@ -119,11 +160,12 @@
 	        }
 	        
 	    });
-		
+		$("#electivedialog").load("electivechooser.php");
 		//for (var i=0; i<5; i++;) {
 		$('#sem1 ul').append("<li><span>COMS 141</span><span class=\"creds\">Credits: 4</span></li>");
 		$('#sem1 ul').append("<li class=\"complete\"><span>COMS 341</span><span class=\"creds\">Credits: 4</span></li>");
 		$('#sem1 ul').append("<li><span>COMS 441</span><span class=\"creds\">Credits: 4</span></li>");
+		$('#sem2 ul').append("<li class=\"elective\"><span>Supp Elective</span><span class=\"creds\">Credits: 3-4</span></li>");
 		
 		//}
 		
@@ -138,7 +180,7 @@
 	
 </head>
 <body>
-
+<div id="electivedialog" style="opacity:0"></div>
 <div id="wrap">
     <div class="info-col">
     
