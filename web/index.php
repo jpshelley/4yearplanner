@@ -101,7 +101,7 @@ $name = $_SESSION['last'] . ', ' . $_SESSION['first'];
 					});
 				});
 			}
-			else if (cla != "selected" && cla != "complete")
+			else if (cla != "selected" && cla != "complete" && cla != "isCompleted")
 				$(this).addClass("selected");
 			else if (cla == "selected")
 			{
@@ -175,11 +175,20 @@ $name = $_SESSION['last'] . ', ' . $_SESSION['first'];
 		$('#sem1 ul').append("<li class=\"complete\"><span>COMS 341</span><span class=\"creds\">Credits: 4</span></li>");
 		$('#sem1 ul').append("<li><span>COMS 441</span><span class=\"creds\">Credits: 4</span></li>");
 		$('#sem2 ul').append("<li class=\"elective\"><span>Supp Elective</span><span class=\"creds\">Credits: 3-4</span></li>");
-		
+		$('#sem1 ul').append("<li class=\"isCompleted\"><div>Completed: <input type=\"checkbox\" id=\"completed_id\" value=\"completed_value\" /></div></li>");
 		//}
 		
 	    $("#starter").trigger("click");
- 
+
+	    $(".isCompleted div").click(function(){
+			var isChecked = $(this).find('#completed_id').prop('checked');
+			if(isChecked){
+				$(this).find('#completed_id').prop('checked', false);
+			}
+			else{
+				$(this).find('#completed_id').prop('checked', true);
+			}
+		});
 	    
 	});
                     
