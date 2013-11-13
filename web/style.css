@@ -30,6 +30,19 @@ div.semesterBlock li {
 	margin-left: 3px;
 	z-index: 5;
 }
+div.semesterBlock li.isCompleted {
+	background-color: darkgray;
+	display: inline-block;
+	padding: 4px;
+	width: 100px;
+	height: 20px;
+	margin-right: 13px;
+	margin-top: 3px;
+	border-radius: 5px;
+	margin-left: 3px;
+	float:right;
+}
+
 li:hover {
 	cursor: pointer;
 }
