@@ -1,7 +1,16 @@
+<?php
+
+session_start();
+if(!isset($_SESSION['netid']))
+{
+	 header('Location: ' . 'login.php');
+}
+$name = $_SESSION['last'] . ', ' . $_SESSION['first'];
+?>
 <html lang="us">
 <head>
 	<meta charset="utf-8">
-	<title>Porous</title>
+	<title>4 Year Planner</title>
 	<link href="style.css" rel="stylesheet">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -189,7 +198,7 @@
     	<dl>
     		<dt id="starter">User Info</dt>
     			<dd>
-				Name: First Last
+				Name: <?= $name ?>
 				<br>
 				Add Classes here.	   
     	  		</dd>

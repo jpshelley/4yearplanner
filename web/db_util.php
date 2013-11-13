@@ -49,4 +49,36 @@ function validate_login($netid, $pass)
 	}
 }
 
+function select_student($columns, $whereCol, $value)
+{
+	$database = dbInit_SQLite();
+
+	$res = $database->prepare("SELECT $columns FROM `student` WHERE $whereCol = ?");
+	$res->execute(array($value));
+	foreach ($res as $row) {
+		return $row;
+	}
+}
+
+function exists($netid)
+{
+	$database = dbInit_SQLite();
+
+	$res = $database->prepare("SELECT COUNT(netid) FROM `student` WHERE netid = ?");
+	$res->execute(array($netid));
+	if(!$res->fetch(PDO::FETCH_ASSOC))
+	{
+		return false;
+	}
+	return true;
+}
+
+function get_majors()
+{
+	$database = dbInit_SQLite();
+
+	$res = $database->query("SELECT major_name FROM `major`");
+	return $res;
+}
+
 ?>
