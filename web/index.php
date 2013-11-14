@@ -320,14 +320,32 @@ $sem_8_courses = $final_sem_8->fetchAll();
 		
 	    $("#starter").trigger("click");
 
+		//Checks semester completed checkbox.  Sends AJAX request to update database
 	    $(".isCompleted div").click(function(){
 			var isChecked = $(this).find('#completed_id').prop('checked');
 			if(isChecked){
 				$(this).find('#completed_id').prop('checked', false);
+				$.post("complete_semester.php",
+						  {
+						  		//TODO - get semester ID for input.  Take from id field in semesterBlock
+						  		semester_id:""
+							  	is_complete:"false"
+						  },
+						  function(data,status){
+						  });
 			}
 			else{
 				$(this).find('#completed_id').prop('checked', true);
+				$.post("complete_semester.php",
+						  {
+						  		semester_id:""
+							  	is_complete:"true"
+						  },
+						  function(data,status){
+						  });
 			}
+			
+			
 		});
 	    
 	});

@@ -320,7 +320,7 @@ $sem_8_courses = $final_sem_8->fetchAll();
 		
 	    $("#starter").trigger("click");
 
-	      $(".isCompleted div").click(function(){
+	    $(".isCompleted div").click(function(){
 			var isChecked = $(this).find('#completed_id').prop('checked');
 			if(isChecked){
 				$(this).find('#completed_id').prop('checked', false);
