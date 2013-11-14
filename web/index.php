@@ -6,6 +6,133 @@ if(!isset($_SESSION['netid']))
 	 header('Location: ' . 'login.php');
 }
 $name = $_SESSION['last'] . ', ' . $_SESSION['first'];
+
+function dbInit_SQLite()
+{
+
+	//$database = sqlite_open("project3.sqlite.db") or die("Failed to make/connect to database. ");
+	$database = new PDO('sqlite:project3.sqlite.db');
+	$database->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+	return $database;
+}
+if (isset($_SESSION['netid']))
+{
+$database = dbInit_SQLite();
+// change this into select statement
+//$major = $majorid;
+// Create new schedule and get id
+$stmt_sem_1 = $database->prepare("SELECT semesterid, completed FROM semester WHERE netid = ? AND order = 0");
+$stmt_sem_2 = $database->prepare("SELECT semesterid, completed FROM semester WHERE netid = ? AND order = 1");
+$stmt_sem_3 = $database->prepare("SELECT semesterid, completed FROM semester WHERE netid = ? AND order = 2");
+$stmt_sem_4 = $database->prepare("SELECT semesterid, completed FROM semester WHERE netid = ? AND order = 3");
+$stmt_sem_5 = $database->prepare("SELECT semesterid, completed FROM semester WHERE netid = ? AND order = 4");
+$stmt_sem_6 = $database->prepare("SELECT semesterid, completed FROM semester WHERE netid = ? AND order = 5");
+$stmt_sem_7 = $database->prepare("SELECT semesterid, completed FROM semester WHERE netid = ? AND order = 6");
+$stmt_sem_8 = $database->prepare("SELECT semesterid, completed FROM semester WHERE netid = ? AND order = 7");
+$params = array('jbravo'); 
+
+$stmt_sem_1->execute($params);
+$stmt_sem_2->execute($params);
+$stmt_sem_3->execute($params);
+$stmt_sem_4->execute($params);
+$stmt_sem_5->execute($params);
+$stmt_sem_6->execute($params);
+$stmt_sem_7->execute($params);
+$stmt_sem_8->execute($params);
+
+$stmt_sem_1_res = $stmt_sem_1->fetchAll();
+$stmt_sem_2_res = $stmt_sem_2->fetchAll();
+$stmt_sem_3_res = $stmt_sem_3->fetchAll();
+$stmt_sem_4_res = $stmt_sem_4->fetchAll();
+$stmt_sem_5_res = $stmt_sem_5->fetchAll();
+$stmt_sem_6_res = $stmt_sem_6->fetchAll();
+$stmt_sem_7_res = $stmt_sem_7->fetchAll();
+$stmt_sem_8_res = $stmt_sem_8->fetchAll();
+
+$stmt_sem_1 = $database->prepare("SELECT courseid FROM semester_schedule WHERE semesterid = ?");
+$params = array($stmt_sem_1_res[0][0]); 
+$stmt_sem_1->execute($params);
+$stmt_sem_2 = $database->prepare("SELECT courseid FROM semester_schedule WHERE semesterid = ?");
+$params = array($stmt_sem_1_res[0][1]);
+$stmt_sem_2->execute($params);
+$stmt_sem_3 = $database->prepare("SELECT courseid FROM semester_schedule WHERE semesterid = ?");
+$params = array($stmt_sem_1_res[0][2]);
+$stmt_sem_3->execute($params);
+$stmt_sem_4 = $database->prepare("SELECT courseid FROM semester_schedule WHERE semesterid = ?");
+$params = array($stmt_sem_1_res[0][3]);
+$stmt_sem_4->execute($params);
+$stmt_sem_5 = $database->prepare("SELECT courseid FROM semester_schedule WHERE semesterid = ?");
+$params = array($stmt_sem_1_res[0][4]);
+$stmt_sem_5->execute($params);
+$stmt_sem_6 = $database->prepare("SELECT courseid FROM semester_schedule WHERE semesterid = ?");
+$params = array($stmt_sem_1_res[0][5]);
+$stmt_sem_6->execute($params);
+$stmt_sem_7 = $database->prepare("SELECT courseid FROM semester_schedule WHERE semesterid = ?");
+$params = array($stmt_sem_1_res[0][6]);
+$stmt_sem_7->execute($params);
+$stmt_sem_8 = $database->prepare("SELECT courseid FROM semester_schedule WHERE semesterid = ?");
+$params = array($stmt_sem_1_res[0][7]);
+$stmt_sem_8->execute($params);
+
+$sem_1_courses = $stmt_sem_1->fetchAll(PDO::FETCH_COLUMN, 0);
+$sem_2_courses = $stmt_sem_2->fetchAll(PDO::FETCH_COLUMN, 0);
+$sem_3_courses = $stmt_sem_3->fetchAll(PDO::FETCH_COLUMN, 0);
+$sem_4_courses = $stmt_sem_4->fetchAll(PDO::FETCH_COLUMN, 0);
+$sem_5_courses = $stmt_sem_5->fetchAll(PDO::FETCH_COLUMN, 0);
+$sem_6_courses = $stmt_sem_6->fetchAll(PDO::FETCH_COLUMN, 0);
+$sem_7_courses = $stmt_sem_7->fetchAll(PDO::FETCH_COLUMN, 0);
+$sem_8_courses = $stmt_sem_8->fetchAll(PDO::FETCH_COLUMN, 0);
+
+
+$sem_1_c = array_map(create_function('$value', 'return (int)$value;'),$sem_1_courses);
+$sem_2_c = array_map(create_function('$value', 'return (int)$value;'),$sem_2_courses);
+$sem_3_c = array_map(create_function('$value', 'return (int)$value;'),$sem_3_courses);
+$sem_4_c = array_map(create_function('$value', 'return (int)$value;'),$sem_4_courses);
+$sem_5_c = array_map(create_function('$value', 'return (int)$value;'),$sem_5_courses);
+$sem_6_c = array_map(create_function('$value', 'return (int)$value;'),$sem_6_courses);
+$sem_7_c = array_map(create_function('$value', 'return (int)$value;'),$sem_7_courses);
+$sem_8_c = array_map(create_function('$value', 'return (int)$value;'),$sem_8_courses);
+
+$sem_1_place_holders = implode(',', array_fill(0, count($sem_1_c), '?'));
+$sem_2_place_holders = implode(',', array_fill(0, count($sem_2_c), '?'));
+$sem_3_place_holders = implode(',', array_fill(0, count($sem_3_c), '?'));
+$sem_4_place_holders = implode(',', array_fill(0, count($sem_4_c), '?'));
+$sem_5_place_holders = implode(',', array_fill(0, count($sem_5_c), '?'));
+$sem_6_place_holders = implode(',', array_fill(0, count($sem_6_c), '?'));
+$sem_7_place_holders = implode(',', array_fill(0, count($sem_7_c), '?'));
+$sem_8_place_holders = implode(',', array_fill(0, count($sem_8_c), '?'));
+
+$final_sem_1 = $database->prepare("SELECT course_name, credits FROM course WHERE courseid IN ($sem_1_place_holders)");
+$final_sem_2 = $database->prepare("SELECT course_name, credits FROM course WHERE courseid IN ($sem_2_place_holders)");
+$final_sem_3 = $database->prepare("SELECT course_name, credits FROM course WHERE courseid IN ($sem_3_place_holders)");
+$final_sem_4 = $database->prepare("SELECT course_name, credits FROM course WHERE courseid IN ($sem_4_place_holders)");
+$final_sem_5 = $database->prepare("SELECT course_name, credits FROM course WHERE courseid IN ($sem_5_place_holders)");
+$final_sem_6 = $database->prepare("SELECT course_name, credits FROM course WHERE courseid IN ($sem_6_place_holders)");
+$final_sem_7 = $database->prepare("SELECT course_name, credits FROM course WHERE courseid IN ($sem_7_place_holders)");
+$final_sem_8 = $database->prepare("SELECT course_name, credits FROM course WHERE courseid IN ($sem_8_place_holders)");
+
+$final_sem_1->execute($sem_1_c);
+$final_sem_2->execute($sem_2_c);
+$final_sem_3->execute($sem_3_c);
+$final_sem_4->execute($sem_4_c);
+$final_sem_5->execute($sem_5_c);
+$final_sem_6->execute($sem_6_c);
+$final_sem_7->execute($sem_7_c);
+$final_sem_8->execute($sem_8_c);
+
+$sem_1_courses = $final_sem_1->fetchAll();
+$sem_2_courses = $final_sem_2->fetchAll();
+$sem_3_courses = $final_sem_3->fetchAll();
+$sem_4_courses = $final_sem_4->fetchAll();
+$sem_5_courses = $final_sem_5->fetchAll();
+$sem_6_courses = $final_sem_6->fetchAll();
+$sem_7_courses = $final_sem_7->fetchAll();
+$sem_8_courses = $final_sem_8->fetchAll();
+
+
+
+}
+
 ?>
 <html lang="us">
 <head>
@@ -40,6 +167,17 @@ $name = $_SESSION['last'] . ', ' . $_SESSION['first'];
 		
 		
 	$(function() {
+	
+		var sem1courses = <?php echo json_encode($sem_1_courses); ?>;
+		var sem2courses = <?php echo json_encode($sem_2_courses); ?>;
+		var sem3courses = <?php echo json_encode($sem_3_courses); ?>;
+		var sem4courses = <?php echo json_encode($sem_4_courses); ?>;
+		var sem5courses = <?php echo json_encode($sem_5_courses); ?>;
+		var sem6courses = <?php echo json_encode($sem_6_courses); ?>;
+		var sem7courses = <?php echo json_encode($sem_7_courses); ?>;
+		var sem8courses = <?php echo json_encode($sem_8_courses); ?>;
+		
+		alert(sem1courses[0][0]);
 	
 	    // Set up variables
 	    var $el, $parentWrap, $otherWrap, 
@@ -87,19 +225,21 @@ $name = $_SESSION['last'] . ', ' . $_SESSION['first'];
 					}, 100);
 					$("#electivedialog li").unbind();
 				});
-				$("#electivedialog").bind("mouseenter", function() {
-					$("#electivedialog").bind("mouseleave", function() {
-						$("#electivedialog").animate({opacity:0, left: "-=30px"}, 50);
-						setTimeout(function() {
-							$("#electivedialog").css({
-								top: "0px",
-								left: "0px"
-							});
-						}, 100);
-						$("#electivedialog").unbind();
-						$("#electivedialog li").unbind();
+				setTimeout(function() {
+					$("#electivedialog").bind("mouseenter", function() {
+						$("#electivedialog").bind("mouseleave", function() {
+							$("#electivedialog").animate({opacity:0, left: "-=30px"}, 50);
+							setTimeout(function() {
+								$("#electivedialog").css({
+									top: "0px",
+									left: "0px"
+								});
+							}, 100);
+							$("#electivedialog").unbind();
+							$("#electivedialog li").unbind();
+						});
 					});
-				});
+				}, 100);
 			}
 			else if (cla != "selected" && cla != "complete" && cla != "isCompleted")
 				$(this).addClass("selected");
@@ -233,6 +373,7 @@ $name = $_SESSION['last'] . ', ' . $_SESSION['first'];
 		  <dt>Fall 2010</dt>
               <dd>
               	<div id="sem1" class="semesterBlock">
+				<div style="display: none"></div>
               	<ul>
 				
 				</ul>
@@ -242,6 +383,7 @@ $name = $_SESSION['last'] . ', ' . $_SESSION['first'];
 		  <dt>Spring 2011</dt>
               <dd>
                 <div id="sem2" class="semesterBlock">
+				<div style="display: none"></div>
               	<ul>
 				
 				</ul>
@@ -250,6 +392,7 @@ $name = $_SESSION['last'] . ', ' . $_SESSION['first'];
 		  <dt>Fall 2011</dt>
 		  	<dd>
               <div id="sem3" class="semesterBlock">
+			  <div style="display: none"></div>
               	<ul>
 				
 				</ul>
@@ -258,6 +401,7 @@ $name = $_SESSION['last'] . ', ' . $_SESSION['first'];
           <dt>Spring 2012</dt>
 		  	<dd>
               <div id="sem4" class="semesterBlock">
+			  <div style="display: none"></div>
               	<ul>
 				
 				</ul>
@@ -266,6 +410,7 @@ $name = $_SESSION['last'] . ', ' . $_SESSION['first'];
 		  <dt>Fall 2012</dt>
 		  	<dd>
               <div id="sem5" class="semesterBlock">
+			  <div style="display: none"></div>
               	<ul>
 				
 				</ul>
@@ -274,6 +419,7 @@ $name = $_SESSION['last'] . ', ' . $_SESSION['first'];
 		  <dt>Spring 2013</dt>
 		  	<dd>
                <div id="sem6" class="semesterBlock">
+			   <div style="display: none"></div>
               	<ul>
 				
 				</ul>
@@ -282,6 +428,7 @@ $name = $_SESSION['last'] . ', ' . $_SESSION['first'];
 		  <dt>Fall 2013</dt>
 		  	<dd>
               <div id="sem7" class="semesterBlock">
+			  <div style="display: none"></div>
               	<ul>
 				
 				</ul>
@@ -290,6 +437,7 @@ $name = $_SESSION['last'] . ', ' . $_SESSION['first'];
 		   <dt>Spring 2014</dt>
 		  	<dd>
                <div id="sem8" class="semesterBlock">
+			   <div style="display: none"></div>
               	<ul>
 				
 				</ul>
