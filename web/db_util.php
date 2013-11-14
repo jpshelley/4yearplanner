@@ -1,4 +1,7 @@
 <?php
+/**
+* Contains a bunch of helper functions to interface with the database
+**/
 function dbInit_mySQL()
 {
 	$mysqli = new mysqli("test.com", "root", "pass", "database");

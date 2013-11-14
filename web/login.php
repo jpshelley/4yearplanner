@@ -1,4 +1,9 @@
 <?php
+/**
+*
+* Logs a user in and stores their name in the session so 
+* they can keep coming back without having to log in
+**/
 
 include 'db_util.php';
 $errMsg = '';
@@ -19,9 +24,6 @@ if(isset($_POST['netid']))
 		$errMsg = 'Incorrect password or netid, please try again';
 	}
 }
-//$first, $last, $netid, $pass, $major, $start_year, $start_semester
-//create_student('Johnny','Bravo','jbravo','imsexy','Software Engineering','2010','F');
-//var_dump(validate_login('jbravo', 'imsexy'));
 ?>
 
 <html>
@@ -30,8 +32,8 @@ if(isset($_POST['netid']))
 	<form action='login.php' method='post'>
 		Net ID: <input type='text' name='netid' required><br>
 		Password: <input type='password' name='pass' required><br>
-		<input type='submit'>
-		<input type='submit' formaction='register.php'>
+		<input type='submit' value='Login'>
+		<input type='submit' value='Register' formaction='register.php'>
 	</form>
 </body>
 </html>
