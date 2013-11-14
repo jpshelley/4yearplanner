@@ -6,7 +6,9 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
-
+<!-- We use this page as a self-contained script to grab a list of electives from the database to choose from
+The current progress is that all 3 categories are returened, but the supplemental category is always displayed
+The next step would be to check what kind of elective was clicked on, so the correct list is displayed -->
 <?php
 function dbInit_SQLite()
 {
@@ -22,7 +24,7 @@ function get_sup_electives($majorid)
 	$database = dbInit_SQLite();
 	// change this into select statement
 	$major = $majorid;
-	// Create new schedule and get id
+	// get sup electives
 	$stmt_sup = $database->prepare("SELECT courseid FROM supplemental_elective WHERE majorid = ?");
 	$params = array($major); 
 	$stmt_sup->execute($params);
@@ -39,7 +41,7 @@ function get_tech_electives($majorid)
 	$database = dbInit_SQLite();
 	// change this into select statement
 	$major = $majorid;
-	// Create new schedule and get id
+	// get tech electives
 	$stmt_tech = $database->prepare("SELECT courseid FROM tech_elective WHERE majorid = ?");
 	$params = array($major); 
 	$stmt_tech->execute($params);	
@@ -56,7 +58,7 @@ function get_gen_electives($majorid)
 	$database = dbInit_SQLite();
 	// change this into select statement
 	$major = $majorid;
-	// Create new schedule and get id
+	// get general electives
 	$stmt_gen = $database->prepare("SELECT courseid FROM general_elective WHERE majorid = ?");
 	$params = array($major); 
 	$stmt_gen->execute($params);

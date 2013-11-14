@@ -18,9 +18,7 @@ function dbInit_SQLite()
 if (isset($_SESSION['netid']))
 {
 $database = dbInit_SQLite();
-// change this into select statement
-//$major = $majorid;
-// Create new schedule and get id
+
 
 $stmt_sem_1 = $database->prepare("SELECT semesterid, completed FROM semester WHERE netid = ?");
 $params1 = array('jbravo'); 
@@ -29,6 +27,9 @@ $stmt_sem_1->execute($params1);
 
 $stmt_sem_1_res = $stmt_sem_1->fetchAll();
 
+/* 
+Although this is not pretty, it works. 8 seperate queries are built and run for each of 8 semesters (this would pose a problem for more than 8)
+  */
 $stmt_sem_1 = $database->prepare("SELECT courseid FROM semester_schedule WHERE semesterid = ?");
 $params = array($stmt_sem_1_res[0][0]); 
 $stmt_sem_1->execute($params);
@@ -63,7 +64,7 @@ $sem_6_courses = $stmt_sem_6->fetchAll(PDO::FETCH_COLUMN, 0);
 $sem_7_courses = $stmt_sem_7->fetchAll(PDO::FETCH_COLUMN, 0);
 $sem_8_courses = $stmt_sem_8->fetchAll(PDO::FETCH_COLUMN, 0);
 
-
+// Setting up array of courseid's for the courses in each semester, so we can grab the name and credits values
 $sem_1_c = array_map(create_function('$value', 'return (int)$value;'),$sem_1_courses);
 $sem_2_c = array_map(create_function('$value', 'return (int)$value;'),$sem_2_courses);
 $sem_3_c = array_map(create_function('$value', 'return (int)$value;'),$sem_3_courses);
@@ -73,6 +74,7 @@ $sem_6_c = array_map(create_function('$value', 'return (int)$value;'),$sem_6_cou
 $sem_7_c = array_map(create_function('$value', 'return (int)$value;'),$sem_7_courses);
 $sem_8_c = array_map(create_function('$value', 'return (int)$value;'),$sem_8_courses);
 
+// Imploding arrays to fill with ? for queries
 $sem_1_place_holders = implode(',', array_fill(0, count($sem_1_c), '?'));
 $sem_2_place_holders = implode(',', array_fill(0, count($sem_2_c), '?'));
 $sem_3_place_holders = implode(',', array_fill(0, count($sem_3_c), '?'));
@@ -82,6 +84,7 @@ $sem_6_place_holders = implode(',', array_fill(0, count($sem_6_c), '?'));
 $sem_7_place_holders = implode(',', array_fill(0, count($sem_7_c), '?'));
 $sem_8_place_holders = implode(',', array_fill(0, count($sem_8_c), '?'));
 
+// Final select statements for course table
 $final_sem_1 = $database->prepare("SELECT course_name, credits FROM course WHERE courseid IN ($sem_1_place_holders)");
 $final_sem_2 = $database->prepare("SELECT course_name, credits FROM course WHERE courseid IN ($sem_2_place_holders)");
 $final_sem_3 = $database->prepare("SELECT course_name, credits FROM course WHERE courseid IN ($sem_3_place_holders)");
@@ -100,6 +103,7 @@ $final_sem_6->execute($sem_6_c);
 $final_sem_7->execute($sem_7_c);
 $final_sem_8->execute($sem_8_c);
 
+// Final course lists as arrays for each semester 
 $sem_1_courses = $final_sem_1->fetchAll();
 $sem_2_courses = $final_sem_2->fetchAll();
 $sem_3_courses = $final_sem_3->fetchAll();
@@ -156,7 +160,7 @@ $sem_8_courses = $final_sem_8->fetchAll();
 		var sem6courses = <?php echo json_encode($sem_6_courses); ?>;
 		var sem7courses = <?php echo json_encode($sem_7_courses); ?>;
 		var sem8courses = <?php echo json_encode($sem_8_courses); ?>;
-		
+		// 1 loop for each of 8 semesters, with each loop appending courses from the corresponding course array from php
 		for (var i = 0; i < sem1courses.length; i++) {
 			if (sem1courses[i][1] == 0)
 			{
@@ -247,6 +251,7 @@ $sem_8_courses = $final_sem_8->fetchAll();
 	        
 	    });
 	    var $activeelec;
+		// Bind click to class boxes, with a special case for electives to pop in the elective chooser script
 		$("#wrap").delegate(".semesterBlock li", "click", function() {
 			var cla = $(this).attr("class");
 			if (cla == "elective") {
