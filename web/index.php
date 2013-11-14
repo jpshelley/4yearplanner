@@ -21,57 +21,37 @@ $database = dbInit_SQLite();
 // change this into select statement
 //$major = $majorid;
 // Create new schedule and get id
-$stmt_sem_1 = $database->prepare("SELECT semesterid, completed FROM semester WHERE netid = ? AND order = 0");
-$stmt_sem_2 = $database->prepare("SELECT semesterid, completed FROM semester WHERE netid = ? AND order = 1");
-$stmt_sem_3 = $database->prepare("SELECT semesterid, completed FROM semester WHERE netid = ? AND order = 2");
-$stmt_sem_4 = $database->prepare("SELECT semesterid, completed FROM semester WHERE netid = ? AND order = 3");
-$stmt_sem_5 = $database->prepare("SELECT semesterid, completed FROM semester WHERE netid = ? AND order = 4");
-$stmt_sem_6 = $database->prepare("SELECT semesterid, completed FROM semester WHERE netid = ? AND order = 5");
-$stmt_sem_7 = $database->prepare("SELECT semesterid, completed FROM semester WHERE netid = ? AND order = 6");
-$stmt_sem_8 = $database->prepare("SELECT semesterid, completed FROM semester WHERE netid = ? AND order = 7");
-$params = array('jbravo'); 
 
-$stmt_sem_1->execute($params);
-$stmt_sem_2->execute($params);
-$stmt_sem_3->execute($params);
-$stmt_sem_4->execute($params);
-$stmt_sem_5->execute($params);
-$stmt_sem_6->execute($params);
-$stmt_sem_7->execute($params);
-$stmt_sem_8->execute($params);
+$stmt_sem_1 = $database->prepare("SELECT semesterid, completed FROM semester WHERE netid = ?");
+$params1 = array('jbravo'); 
+
+$stmt_sem_1->execute($params1);
 
 $stmt_sem_1_res = $stmt_sem_1->fetchAll();
-$stmt_sem_2_res = $stmt_sem_2->fetchAll();
-$stmt_sem_3_res = $stmt_sem_3->fetchAll();
-$stmt_sem_4_res = $stmt_sem_4->fetchAll();
-$stmt_sem_5_res = $stmt_sem_5->fetchAll();
-$stmt_sem_6_res = $stmt_sem_6->fetchAll();
-$stmt_sem_7_res = $stmt_sem_7->fetchAll();
-$stmt_sem_8_res = $stmt_sem_8->fetchAll();
 
 $stmt_sem_1 = $database->prepare("SELECT courseid FROM semester_schedule WHERE semesterid = ?");
 $params = array($stmt_sem_1_res[0][0]); 
 $stmt_sem_1->execute($params);
 $stmt_sem_2 = $database->prepare("SELECT courseid FROM semester_schedule WHERE semesterid = ?");
-$params = array($stmt_sem_1_res[0][1]);
+$params = array($stmt_sem_1_res[1][0]);
 $stmt_sem_2->execute($params);
 $stmt_sem_3 = $database->prepare("SELECT courseid FROM semester_schedule WHERE semesterid = ?");
-$params = array($stmt_sem_1_res[0][2]);
+$params = array($stmt_sem_1_res[2][0]);
 $stmt_sem_3->execute($params);
 $stmt_sem_4 = $database->prepare("SELECT courseid FROM semester_schedule WHERE semesterid = ?");
-$params = array($stmt_sem_1_res[0][3]);
+$params = array($stmt_sem_1_res[3][0]);
 $stmt_sem_4->execute($params);
 $stmt_sem_5 = $database->prepare("SELECT courseid FROM semester_schedule WHERE semesterid = ?");
-$params = array($stmt_sem_1_res[0][4]);
+$params = array($stmt_sem_1_res[4][0]);
 $stmt_sem_5->execute($params);
 $stmt_sem_6 = $database->prepare("SELECT courseid FROM semester_schedule WHERE semesterid = ?");
-$params = array($stmt_sem_1_res[0][5]);
+$params = array($stmt_sem_1_res[5][0]);
 $stmt_sem_6->execute($params);
 $stmt_sem_7 = $database->prepare("SELECT courseid FROM semester_schedule WHERE semesterid = ?");
-$params = array($stmt_sem_1_res[0][6]);
+$params = array($stmt_sem_1_res[6][0]);
 $stmt_sem_7->execute($params);
 $stmt_sem_8 = $database->prepare("SELECT courseid FROM semester_schedule WHERE semesterid = ?");
-$params = array($stmt_sem_1_res[0][7]);
+$params = array($stmt_sem_1_res[7][0]);
 $stmt_sem_8->execute($params);
 
 $sem_1_courses = $stmt_sem_1->fetchAll(PDO::FETCH_COLUMN, 0);
@@ -177,8 +157,73 @@ $sem_8_courses = $final_sem_8->fetchAll();
 		var sem7courses = <?php echo json_encode($sem_7_courses); ?>;
 		var sem8courses = <?php echo json_encode($sem_8_courses); ?>;
 		
-		alert(sem1courses[0][0]);
-	
+		for (var i = 0; i < sem1courses.length; i++) {
+			if (sem1courses[i][1] == 0)
+			{
+				$("#sem1 ul").append("<li class=\"elective\"><span>" + sem1courses[i][0] + "</span><span class=\"creds\">" + sem1courses[i][1] + "</span></li>");
+			}
+			else
+				$("#sem1 ul").append("<li><span>" + sem1courses[i][0] + "</span><span class=\"creds\">" + sem1courses[i][1] + "</span></li>");
+		}
+		for (var i = 0; i < sem2courses.length; i++) {
+			if (sem2courses[i][1] == 0)
+			{
+				$("#sem2 ul").append("<li class=\"elective\"><span>" + sem2courses[i][0] + "</span><span class=\"creds\">" + sem2courses[i][1] + "</span></li>");
+			}
+			else
+				$("#sem2 ul").append("<li><span>" + sem2courses[i][0] + "</span><span class=\"creds\">" + sem2courses[i][1] + "</span></li>");
+		}
+		for (var i = 0; i < sem3courses.length; i++) {
+			if (sem3courses[i][1] == 0)
+			{
+				$("#sem3 ul").append("<li class=\"elective\"><span>" + sem3courses[i][0] + "</span><span class=\"creds\">" + sem3courses[i][1] + "</span></li>");
+			}
+			else
+				$("#sem3 ul").append("<li><span>" + sem3courses[i][0] + "</span><span class=\"creds\">" + sem3courses[i][1] + "</span></li>");
+		}
+		for (var i = 0; i < sem4courses.length; i++) {
+			if (sem4courses[i][1] == 0)
+			{
+				$("#sem4 ul").append("<li class=\"elective\"><span>" + sem4courses[i][0] + "</span><span class=\"creds\">" + sem4courses[i][1] + "</span></li>");
+			}
+			else
+				$("#sem4 ul").append("<li><span>" + sem4courses[i][0] + "</span><span class=\"creds\">" + sem4courses[i][1] + "</span></li>");
+		}
+		for (var i = 0; i < sem5courses.length; i++) {
+			if (sem5courses[i][1] == 0)
+			{
+				$("#sem5 ul").append("<li class=\"elective\"><span>" + sem5courses[i][0] + "</span><span class=\"creds\">" + sem5courses[i][1] + "</span></li>");
+			}
+			else
+				$("#sem5 ul").append("<li><span>" + sem5courses[i][0] + "</span><span class=\"creds\">" + sem5courses[i][1] + "</span></li>");
+		}
+		for (var i = 0; i < sem6courses.length; i++) {
+			if (sem6courses[i][1] == 0)
+			{
+				$("#sem6 ul").append("<li class=\"elective\"><span>" + sem6courses[i][0] + "</span><span class=\"creds\">" + sem6courses[i][1] + "</span></li>");
+			}
+			else
+				$("#sem6 ul").append("<li><span>" + sem6courses[i][0] + "</span><span class=\"creds\">" + sem6courses[i][1] + "</span></li>");
+		}
+		for (var i = 0; i < sem7courses.length; i++) {
+			if (sem7courses[i][1] == 0)
+			{
+				$("#sem7 ul").append("<li class=\"elective\"><span>" + sem7courses[i][0] + "</span><span class=\"creds\">" + sem7courses[i][1] + "</span></li>");
+			}
+			else
+				$("#sem7 ul").append("<li><span>" + sem7courses[i][0] + "</span><span class=\"creds\">" + sem7courses[i][1] + "</span></li>");
+		}
+		for (var i = 0; i < sem8courses.length; i++) {
+			if (sem8courses[i][1] == 0)
+			{
+				$("#sem8 ul").append("<li class=\"elective\"><span>" + sem8courses[i][0] + "</span><span class=\"creds\">" + sem8courses[i][1] + "</span></li>");
+			}
+			else
+				$("#sem8 ul").append("<li><span>" + sem8courses[i][0] + "</span><span class=\"creds\">" + sem8courses[i][1] + "</span></li>");
+		}
+		
+		
+		
 	    // Set up variables
 	    var $el, $parentWrap, $otherWrap, 
 	        $allTitles = $("dt").css({
@@ -311,11 +356,6 @@ $sem_8_courses = $final_sem_8->fetchAll();
 	    });
 		$("#electivedialog").load("electivechooser.php");
 		//for (var i=0; i<5; i++;) {
-		$('#sem1 ul').append("<li><span>COMS 141</span><span class=\"creds\">Credits: 4</span></li>");
-		$('#sem1 ul').append("<li class=\"complete\"><span>COMS 341</span><span class=\"creds\">Credits: 4</span></li>");
-		$('#sem1 ul').append("<li><span>COMS 441</span><span class=\"creds\">Credits: 4</span></li>");
-		$('#sem2 ul').append("<li class=\"elective\"><span>Supp Elective</span><span class=\"creds\">Credits: 3-4</span></li>");
-		$('#sem1 ul').append("<li class=\"isCompleted\"><div>Completed: <input type=\"checkbox\" id=\"completed_id\" value=\"completed_value\" /></div></li>");
 		//}
 		
 	    $("#starter").trigger("click");
