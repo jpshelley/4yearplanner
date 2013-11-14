@@ -368,7 +368,7 @@ $sem_8_courses = $final_sem_8->fetchAll();
 				$.post("complete_semester.php",
 						  {
 						  		//TODO - get semester ID for input.  Take from id field in semesterBlock
-						  		semester_id:""
+						  		semester_id:"",
 							  	is_complete:"false"
 						  },
 						  function(data,status){
@@ -378,7 +378,7 @@ $sem_8_courses = $final_sem_8->fetchAll();
 				$(this).find('#completed_id').prop('checked', true);
 				$.post("complete_semester.php",
 						  {
-						  		semester_id:""
+						  		semester_id:"",
 							  	is_complete:"true"
 						  },
 						  function(data,status){
