@@ -1,27 +1,19 @@
 <?php
-
+include 'db_util.php';
 session_start();
 if(!isset($_SESSION['netid']))
 {
 	 header('Location: ' . 'login.php');
 }
 $name = $_SESSION['last'] . ', ' . $_SESSION['first'];
-
-function dbInit_SQLite()
-{
-
-	//$database = sqlite_open("project3.sqlite.db") or die("Failed to make/connect to database. ");
-	$database = new PDO('sqlite:project3.sqlite.db');
-	$database->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-	return $database;
-}
+$netid = $_SESSION['netid'];
 if (isset($_SESSION['netid']))
 {
 $database = dbInit_SQLite();
 
 
 $stmt_sem_1 = $database->prepare("SELECT semesterid, completed FROM semester WHERE netid = ?");
-$params1 = array('jbravo'); 
+$params1 = array($netid); 
 
 $stmt_sem_1->execute($params1);
 

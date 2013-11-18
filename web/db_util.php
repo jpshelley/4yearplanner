@@ -15,6 +15,7 @@ function dbInit_SQLite()
 {
 	//$database = sqlite_open("project3.sqlite.db") or die("Failed to make/connect to database. ");
 	$database = new PDO('sqlite:project3.sqlite.db');
+	$database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	return $database;
 }
 
