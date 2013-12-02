@@ -42,11 +42,13 @@ if(isset($_POST['netid']))
 	    <![endif]-->
 </head>
 <body>
-	<p style='color:red'><?= $errMsg ?></p>
-	
-	<div class="container">
+    <div class="page-header">
+      <h1>Four Years <small>An intelligent planner</small></h1>
+    </div>	
+    <div class="container">
 	<form class="form-signin" action='login.php' method='post'>
         <h2 class="form-signin-heading">Please sign in</h2>
+        <h5 style='font-style:italic; color:red'><?= $errMsg ?></h5>
 		<input type='text' class="form-control" placeholder="Net ID" name='netid' required><br>
 		<input type='password'class="form-control" placeholder="Password" name='pass' required><br>
 		<button class="btn btn-lg btn-primary btn-block" type='submit' value='Login'> Sign In</button>
