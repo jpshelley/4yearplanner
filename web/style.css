@@ -132,3 +132,17 @@ height: 204px;
 	height: 100px;
 	background-color: gray;
 }
+
+.progress {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+#progress-title {
+    margin-left: 100px;
+}
+
+.alert {
+    margin-left: 50px;
+    margin-right: 50px;
+}

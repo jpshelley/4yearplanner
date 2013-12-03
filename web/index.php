@@ -111,13 +111,16 @@ $sem_8_courses = $final_sem_8->fetchAll();
 
 ?>
 <html lang="us">
-<head>
-	<meta charset="utf-8">
-	<title>4 Year Planner</title>
-	<link href="style.css" rel="stylesheet">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-	<script>	
+    <head>
+	   <meta charset="utf-8">
+	   <title>4 Year Planner</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <!-- Bootstrap -->
+        <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+	   <link href="style.css" rel="stylesheet">
+	   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	   <script>	
 		$(function() {
 		  $( "#accordion" ).accordion();
 		});
@@ -386,27 +389,77 @@ $sem_8_courses = $final_sem_8->fetchAll();
 		});
 	    
 	});
-                    
         
-		
-	</script>
-	
+	</script>    
 </head>
 <body>
-<div id="electivedialog" style="opacity:0"></div>
-<div id="wrap">
-    <div class="info-col">
     
-    	<h2>User</h2>
-    	
-    	<dl>
-    		<dt id="starter">User Info</dt>
+    
+    <nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">4Y</a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">User</a></li>
+      <li><a href="#">Classes</a></li>
+      <li><a href="analytics.html">Analytics</a></li>
+    </ul>
+    <form class="navbar-form navbar-right" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#">Link</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>
+    
+<div class="alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <h3 id="progress-title">Your Current Progress</h3>
+    <h5 id="progress-title"> You're almost there!</h5>
+    <div class="progress progress-striped">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+            <span class="sr-only">80% Complete (success)</span>
+        </div>
+    </div>
+</div>
+    
+<div>
+    <div id="electivedialog" style="opacity:0"></div>
+        <div id="wrap">
+        <div class="info-col">
+    	       <h2>User</h2>
+    	       <dl>
+            <dt id="starter">Student Information</dt>
     			<dd>
 				Name: <?= $name ?>
 				<br>
 				Add Classes here.	   
     	  		</dd>
-			<dt id="major">Major Info</dt>
+			<dt id="major">Degree Information</dt>
     			<dd>
 				Major: 
 				<a href="http://www.se.iastate.edu/academics/resources/">Software Engineering</a>
@@ -421,116 +474,105 @@ $sem_8_courses = $final_sem_8->fetchAll();
 				Supplemental Electives
     	  		</dd>
     	 </dl>
-    </div>
-	<div class="info-col">
-		<h2>Classes</h2>
-		<dl>
-		  <dt>Fall 2010</dt>
-              <dd>
-              	<div id="sem1" class="semesterBlock">
+        </div>
+        <div class="info-col">
+           <h2>Classes</h2>
+           <dl>
+        <dt>Fall 2010</dt>
+            <dd>
+                <div id="sem1" class="semesterBlock">
 				<div style="display: none"></div>
               	<ul>
-				
 				</ul>
               	</div>
-
               </dd>
-		  <dt>Spring 2011</dt>
-              <dd>
+        <dt>Spring 2011</dt>
+            <dd>
                 <div id="sem2" class="semesterBlock">
 				<div style="display: none"></div>
-              	<ul>
-				
+              	<ul>	
 				</ul>
               	</div>
               </dd>
-		  <dt>Fall 2011</dt>
-		  	<dd>
-              <div id="sem3" class="semesterBlock">
-			  <div style="display: none"></div>
+        <dt>Fall 2011</dt>
+            <dd>
+                <div id="sem3" class="semesterBlock">
+                <div style="display: none"></div>
               	<ul>
-				
 				</ul>
               	</div>
 		     </dd>
-          <dt>Spring 2012</dt>
-		  	<dd>
-              <div id="sem4" class="semesterBlock">
-			  <div style="display: none"></div>
+        <dt>Spring 2012</dt>
+            <dd>
+                <div id="sem4" class="semesterBlock">
+                <div style="display: none"></div>
               	<ul>
-				
 				</ul>
               	</div>
-		     </dd>
-		  <dt>Fall 2012</dt>
+		      </dd>
+        <dt>Fall 2012</dt>
 		  	<dd>
               <div id="sem5" class="semesterBlock">
 			  <div style="display: none"></div>
-              	<ul>
-				
+              	<ul>	
 				</ul>
               	</div>
 		     </dd>
-		  <dt>Spring 2013</dt>
+        <dt>Spring 2013</dt>
 		  	<dd>
-               <div id="sem6" class="semesterBlock">
-			   <div style="display: none"></div>
-              	<ul>
-				
+                <div id="sem6" class="semesterBlock">
+                <div style="display: none"></div>
+                <ul>
 				</ul>
               	</div>
 		     </dd>
-		  <dt>Fall 2013</dt>
-		  	<dd>
-              <div id="sem7" class="semesterBlock">
-			  <div style="display: none"></div>
+        <dt>Fall 2013</dt>
+            <dd>
+                <div id="sem7" class="semesterBlock">
+                <div style="display: none"></div>
               	<ul>
-				
 				</ul>
               	</div>
 		     </dd>
-		   <dt>Spring 2014</dt>
-		  	<dd>
-               <div id="sem8" class="semesterBlock">
-			   <div style="display: none"></div>
+        <dt>Spring 2014</dt>
+            <dd>
+                <div id="sem8" class="semesterBlock">
+                <div style="display: none"></div>
               	<ul>
-				
 				</ul>
               	</div>
 		     </dd>
 		</dl>
-	
 	</div>
+    </div>
 					
 </div>
 
-<script>
-
-
-/*
-var xhr;
-if (window.XMLHttpRequest) xhr = new XMLHttpRequest();      // all browsers except IE
-else xhr = new ActiveXObject("Microsoft.XMLHTTP");      // for IE
- 
-xhr.open('GET', 'classes.xml', false);
-xhr.onreadystatechange = function () {
-    if (xhr.readyState===4 && xhr.status===200) {           
-        var items = xhr.responseXML.getElementsByTagName('title');
-        var output = '<ul>';
-        for (var i=0; i<items.length; i++) 
-        	output += '<li>' + "test" + items[i].firstChild.nodeValue + '</li>';
-        output += '</ul>';
- 
-        var div = document.getElementById('year1');
-        div.innerHTML = output;
-    }
-}
-xhr.send();
-*/
-</script>
-
-
-</body>
-     
+        <script>
+        /*
+        var xhr;
+        if (window.XMLHttpRequest) xhr = new XMLHttpRequest();      // all browsers except IE
+        else xhr = new ActiveXObject("Microsoft.XMLHTTP");      // for IE
+         
+        xhr.open('GET', 'classes.xml', false);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState===4 && xhr.status===200) {           
+                var items = xhr.responseXML.getElementsByTagName('title');
+                var output = '<ul>';
+                for (var i=0; i<items.length; i++) 
+                    output += '<li>' + "test" + items[i].firstChild.nodeValue + '</li>';
+                output += '</ul>';
+         
+                var div = document.getElementById('year1');
+                div.innerHTML = output;
+            }
+        }
+        xhr.send();
+        */
+        </script>
+	    <!-- Include all compiled plugins (below), or include individual files as needed -->
     
+	    <script src="dist/js/bootstrap.min.js"></script>
+        <script src="js/chart/Chart.min.js"></script>
+    </body>
 </html>
