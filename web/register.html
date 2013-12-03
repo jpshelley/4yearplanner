@@ -1,0 +1,46 @@
+<html>
+    <head>
+    	<title>Four Years</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <!-- Bootstrap -->
+	    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+	    <link href="styles.css" rel="stylesheet">
+    </head>
+<body>
+    <div class="page-header">
+      <h1>Four Years <small>An intelligent planner</small></h1>
+    </div>	
+    <div class="container">
+	<form class="form-signin" action='register.php' method='post'>
+        <h2 class="form-signin-heading">Please Enter Your Information</h2>
+        <h5 style='font-style:italic; color:red'><?= $errMsg ?></h5>
+		<input type='text' class="form-control" placeholder="First Name" name='first' required><br>
+		<input type='text'class="form-control" placeholder="Last Name" name='last' required><br>
+		<input type='text' class="form-control" placeholder="Net ID" name='netid' required><br>
+		<input type='password' class="form-control" placeholder="Password" name='pass' required><br>
+		<input list='majors' class="form-control" placeholder="Major" name='major' required><br>
+		<input type='text' class="form-control" placeholder="Year" name='year' required><br>
+		<input list='sem' class="form-control" placeholder="Starting Semester" name='start_sem' required><br>
+        <button class="btn btn-lg btn-primary btn-block" type='submit'>Register</button>
+	</form>
+
+	</div> <!-- /container -->
+	<datalist id='majors'>
+		<?php
+			foreach(get_majors() as $major)
+			{
+				$major_name = $major['major_name'];
+				echo "<option value='$major_name'>";
+			}
+		?>
+	</datalist>
+	<datalist id='sem'>
+		<option value='Fall'>
+		<option value='Spring'>
+	</datalist>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	    <script src="https://code.jquery.com/jquery.js"></script>
+	    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	    <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>

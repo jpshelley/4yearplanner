@@ -52,8 +52,8 @@ if(isset($_POST['netid']))
 		<input type='text' class="form-control" placeholder="Net ID" name='netid' required><br>
 		<input type='password'class="form-control" placeholder="Password" name='pass' required><br>
 		<button class="btn btn-lg btn-primary btn-block" type='submit' value='Login'> Sign In</button>
-		<button class="btn btn-lg btn-primary btn-block" type='submit' value='Register' formaction='register.php'> Register</button>
 	</form>
+    <button class="btn btn-lg btn-primary btn-block" value='Register' onclick="location.href='register.html'">Register New</button>
 
 	</div> <!-- /container -->
 	

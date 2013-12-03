@@ -414,22 +414,21 @@ $sem_8_courses = $final_sem_8->fetchAll();
       <li><a href="#">Classes</a></li>
       <li><a href="analytics.html">Analytics</a></li>
     </ul>
-    <form class="navbar-form navbar-right" role="search">
+    <form class="navbar-form navbar-right" autocomplete="on" role="search">
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search">
+        <input type="text" class="form-control"  placeholder="Search">
       </div>
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#">Link</a></li>
+      <li><a href="http://www.iastate.edu">Iowa State</a></li>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">User <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Social</a></li>
           <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
+          <li><a href="logout.php">Logout</a></li>
         </ul>
       </li>
     </ul>
@@ -548,6 +547,19 @@ $sem_8_courses = $final_sem_8->fetchAll();
 					
 </div>
 
+<footer class="panel footer">
+    <div class="panel-footer">
+       <h2>Addidas</h2>
+        <div id="navcontainer">
+            <ul>
+                <li><a href="http://twitter.com/jpshells">John</a></li>
+                <li><a href="#">Haitham</a></li>
+                <li><a href="#">Ian</a></li>
+                <li><a href="#">Trevor</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
         <script>
         /*
         var xhr;
