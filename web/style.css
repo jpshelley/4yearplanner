@@ -51,7 +51,7 @@ li span {
 	position: relative;
 }
 li span.creds {
-bottom: -84px;
+bottom: -70px;
 }
 li.selected {
 	margin-left: 0px !important;

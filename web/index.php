@@ -317,8 +317,6 @@ if (isset($_SESSION['netid']))
             <dt id="starter">Student Information</dt>
     			<dd>
 				Name: <?php echo $name; ?>
-				<br>
-				Add Classes here.	   
     	  		</dd>
 			<dt id="major">Degree Information</dt>
     			<dd>
