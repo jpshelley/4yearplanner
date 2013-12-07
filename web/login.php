@@ -26,13 +26,14 @@ if(isset($_POST['netid']))
 }
 ?>
 
-<html>
+<html lang="en">
 <head>
 	<title>Four Years</title>
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <!-- Bootstrap -->
-	    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
-	    <link href="styles.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
 
 	    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,23 +42,20 @@ if(isset($_POST['netid']))
 	      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 	    <![endif]-->
 </head>
-<body>
+<body> 
     <div class="page-header">
-      <h1>Four Years <small>An intelligent planner</small></h1>
+        <h1>Four Years <small>An intelligent planner</small></h1>
     </div>	
     <div class="container">
-	<form class="form-signin" action='login.php' method='post'>
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <h5 style='font-style:italic; color:red'><?= $errMsg ?></h5>
-		<input type='text' class="form-control" placeholder="Net ID" name='netid' required><br>
-		<input type='password'class="form-control" placeholder="Password" name='pass' required><br>
-		<button class="btn btn-lg btn-primary btn-block" type='submit' value='Login'> Sign In</button>
-	</form>
-    <button class="btn btn-lg btn-primary btn-block" value='Register' onclick="location.href='register.html'">Register New</button>
-
-	</div> <!-- /container -->
-	
-	
+        <form class="form-signin" action='login.php' method='post'>
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <h5 style='font-style:italic; color:red'><?= $errMsg ?></h5>
+            <input type='text' class="form-control" placeholder="Net ID" name='netid' required><br>
+            <input type='password'class="form-control" placeholder="Password" name='pass' required><br>
+            <button class="btn btn-lg btn-primary btn-block" type='submit' value='Login'> Sign In</button>
+        </form>
+        <button class="btn btn-lg btn-primary btn-block" value='Register' onclick="location.href='register.html'"> Register </button>
+    </div> <!-- /container -->	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	    <script src="https://code.jquery.com/jquery.js"></script>
 	    <!-- Include all compiled plugins (below), or include individual files as needed -->

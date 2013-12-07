@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0056)https://www.clusterflunk.com/?codekitCB=408137724.092523 -->
+<html prefix="og: http://ogp.me/ns#"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Four Years</title>
+        <link rel="stylesheet" type="text/css" href="css/maincss.css">
+        <link rel="stylesheet" type="text/css" href="css/main2.css">
+        <!--[if IE]>
+            <link rel="stylesheet"
+                  type="text/css"
+                  href="https://s3.amazonaws.com/clusterlogin/static/css/ie_a0afd3741359be64cea1f6403a51cbe4702604e7.css" />
+        <![endif]-->  
+        <script type="text/javascript" async="" src="./ga.js"></script><script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-35673250-1']);
+            _gaq.push(['_setDomainName', 'clusterflunk.com']);
+            _gaq.push(['_trackPageview']);
+
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+        </script>
+
+    </head>
+    <body class="l-landing" style="zoom: 1;">
+        
+    <header class="header">
+        <div class="l-container">
+            <a href="main.html" target="_top" class="logo">4Y</a>
+            <a href="login.php" target="_top" class="button button-success">Login</a>
+            <a href="register.html" target="_top" class="button button-success">Signup</a>
+        </div>
+    </header>
+        
+    <div class="page landing">
+        <section data-type="background" data-speed="10" class="parallax-0 pages">
+            <section class="marketing">
+                <article>
+                    <h1>Four Years</h1>
+                    <p>Your intelligent college planner</p>
+                    <a href="./register.html" target="_top" class="button button-success">
+                       Join us
+                    </a>
+                </article>
+            </section>
+            <article class="image-on-left">
+                <div class="l-container">
+                    <img src="img/track.png">
+                    <h1>Track your every move</h1>
+                    <p>Want access to every class in your degree or major? You can have it.
+                       Understand what you want to do, and do it.</p>
+                    <div class="clearfix"></div>
+                </div>
+            </article>
+        </section>
+        <section data-type="background" data-speed="10" class="parallax-2 pages">
+            <article class="image-on-right">
+                <div class="l-container">
+                    <canvas id="analyzeChart" width="400" height="400"></canvas>
+                    <h1>Analyze</h1>
+                    <p>With our built in statistics viewer, you'll be sure to never waste
+                        another semester, saving you money.</p>
+                    <div class="clearfix"></div>
+                </div>
+            </article>
+        </section>
+        <section data-type="background" data-speed="10" class="parallax-3 pages">
+            <article>
+                <div class="l-container">
+                    <h1>free</h1>
+                    <p>Four Years will always be free. Our founders are also students, who believe
+                       that you should never have to pay to know which path to take. </p>
+                    <div class="clearfix"></div>
+                </div>
+            </article>
+        </section>
+        <section data-type="background" data-speed="10" class="parallax-4 pages">
+            <footer class="footer">
+                <div class="l-container">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="http://www.iastate.edu">
+                                    Iowa State University
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    Work for us
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./team.html">
+                                    Our Team
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Legal
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </footer>
+    </section>
+    </div>
+    <script type="text/javascript" charset="utf-8" src="./jquery-1.9.1.js"></script>
+    <script src="js/jquery-waypoints/waypoints.min.js"></script>
+    <script src="js/chart/Chart.js"></script>
+    <script>
+        $('#analyzeChart').waypoint(function(direction) {
+         var doughnutData = [ {
+                            value: 30,
+                            color:"#F7464A"},
+                            { value : 50,
+                              color : "#46BFBD" },
+                            { value : 100,
+                              color : "#FDB45C" },
+                            { value : 40,
+                              color : "#949FB1" },
+                            { value : 120,
+                              color : "#4D5360" }
+                        ];
+
+        var myDoughnut = new Chart(document.getElementById("analyzeChart").getContext("2d")).Doughnut(doughnutData);
+        }, { offset: '30%' });
+        
+       
+    </script>
+</body>
+</html>

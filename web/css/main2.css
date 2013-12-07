@@ -1,0 +1,362 @@
+/*
+* Libs
+*/
+/*
+* Vars
+*/
+/*
+* Layouts
+*/
+/*
+* Vars
+*/
+/*
+* Layout: centered
+*/
+body.l-centered {
+  background-color: #f9f9f7;
+  padding-bottom: 50px;
+  position: relative; }
+  body.l-centered .page {
+    height: 100%; }
+  body.l-centered .l-container {
+    padding: 0 15px; }
+
+/*
+* Layout: landing
+*/
+body.l-landing {
+  height: 100%; }
+  body.l-landing .page {
+    height: 100%; }
+  body.l-landing .l-container {
+    padding: 0 15px; }
+
+/*
+* Layout: login
+*/
+.page.l-login .login {
+  width: 600px;
+  margin: 0 auto; }
+  .page.l-login .login .login-email {
+    float: left; }
+  .page.l-login .login .login-social {
+    float: left; }
+
+/*
+* Layout: login
+*/
+.page.l-signup .signup {
+  width: 300px;
+  margin: 0 auto; }
+  .page.l-signup .signup .signup-email {
+    float: left; }
+  .page.l-signup .signup .signup-social {
+    float: left; }
+.page.l-signup .signup.signup-social {
+  width: 600px; }
+
+/*
+* Layout: forgot
+*/
+.page.l-forgot .forgot {
+  width: 300px;
+  margin: 0 auto; }
+
+/*
+* Layout: force-update
+*/
+.page.l-force-update .force-update {
+  width: 300px;
+  margin: 0 auto; }
+
+/*
+* Layout: forgot
+*/
+.page.l-email-opt-out .email-opt-out {
+  width: 300px;
+  margin: 0 auto; }
+
+/*
+* Layout: forgot
+*/
+.page.l-forgot .forgot {
+  width: 300px;
+  margin: 0 auto; }
+
+/*
+* Partial: l-legal
+*/
+.l-legal {
+  padding: 50px 0; }
+  .l-legal .l-container {
+    margin: 0 auto;
+    width: 660px; }
+
+/*
+* Partials
+*/
+/*
+* Vars
+*/
+/*
+* Partial: form-unauthenticated
+*/
+.form.form-unauthenticated label {
+  color: #666666;
+  text-transform: capitalize; }
+  .form.form-unauthenticated label a, .form.form-unauthenticated label small {
+    margin-left: 7px; }
+  .form.form-unauthenticated label small {
+    text-transform: none; }
+.form.form-unauthenticated input {
+  display: block;
+  margin-bottom: 5px; }
+.form.form-unauthenticated input[type="text"], .form.form-unauthenticated input[type="password"] {
+  margin-top: 5px;
+  width: 300px; }
+.form.form-unauthenticated .form-unauthenticated-errors {
+  margin-bottom: 25px; }
+.form.form-unauthenticated input[type="checkbox"] {
+  display: inline; }
+
+/*
+* Vars
+*/
+/*
+* Partial: form-unauthenticated-errors
+*/
+.form-unauthenticated-errors li {
+  color: #ef6c5e;
+  font-size: 1.1rem; }
+.form-unauthenticated-errors li:first-letter {
+  text-transform: capitalize; }
+
+/*
+* Vars
+*/
+/*
+* Partial: header
+*/
+.header {
+  background-color: #333333;
+  height: 48px; }
+  .header .logo {
+    float: left;
+    margin-top: 12px; }
+  .header .button {
+    float: right;
+    margin: 6px 0 0 10px; }
+
+/*
+* Partial: unauthenticated
+*/
+.unauthenticated {
+  padding-top: 50px; }
+  .unauthenticated h3 {
+    color: #333333;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: capitalize; }
+  .unauthenticated p {
+    font-size: 1.2rem;
+    margin-bottom: 15px; }
+
+/*
+* Partial: login
+*/
+.login .login-social {
+  margin: 0 0 15px 30px; }
+  .login .login-social .button {
+    display: block;
+    margin-bottom: 10px; }
+
+/*
+* Partial: signup
+*/
+.signup .signup-email .network-select {
+  line-height: 2.5rem;
+  margin: 5px 0 20px 0; }
+  .signup .signup-email .network-select select {
+    text-transform: capitalize; }
+.signup .signup-social {
+  margin: 0 0 25px 30px; }
+  .signup .signup-social .button {
+    display: block;
+    margin-bottom: 10px; }
+
+/*
+* Partial: signup-social
+*/
+/*
+* Vars
+*/
+/*
+* Partial: marketing
+*/
+.marketing {
+  height: 500px; }
+  .marketing article {
+    padding-top: 150px;
+    text-align: center; }
+    .marketing article h1 {
+      color: #333333;
+      font-size: 5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-transform: capitalize; }
+    .marketing article p {
+      color: #333333;
+      font-size: 2rem;
+      margin-bottom: 30px; }
+    .marketing article .button {
+      font-size: 2rem; }
+
+/*
+* Vars
+*/
+/*
+* Partial: parallax
+*/
+.parallax-0,
+.parallax-1,
+.parallax-2,
+.parallax-3,
+.parallax-4,
+.parallax-5,
+.parallax-6 {
+  background-size: 100%;
+  background-attachment: fixed;
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  height: 130%;
+  margin: 0 auto;
+  position: relative;
+  width: 100%; }
+  .parallax-0 .l-container,
+  .parallax-1 .l-container,
+  .parallax-2 .l-container,
+  .parallax-3 .l-container,
+  .parallax-4 .l-container,
+  .parallax-5 .l-container,
+  .parallax-6 .l-container {
+    margin: 0 auto;
+    max-width: 960px; }
+  .parallax-0 > article,
+  .parallax-1 > article,
+  .parallax-2 > article,
+  .parallax-3 > article,
+  .parallax-4 > article,
+  .parallax-5 > article,
+  .parallax-6 > article {
+    background-color: white;
+    padding: 100px 0;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    z-index: 1000; }
+    .parallax-0 > article h1,
+    .parallax-1 > article h1,
+    .parallax-2 > article h1,
+    .parallax-3 > article h1,
+    .parallax-4 > article h1,
+    .parallax-5 > article h1,
+    .parallax-6 > article h1 {
+      color: #ef6c5e;
+      font-size: 5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-transform: capitalize; }
+    .parallax-0 > article p,
+    .parallax-1 > article p,
+    .parallax-2 > article p,
+    .parallax-3 > article p,
+    .parallax-4 > article p,
+    .parallax-5 > article p,
+    .parallax-6 > article p {
+      color: #525252;
+      font-size: 2.5rem;
+      line-height: 3rem;
+      max-width: 960px;
+      margin: 0 auto; }
+
+.image-on-right {
+  text-align: right; }
+  .image-on-right img {
+    float: right;
+    margin-left: 50px; }
+  .image-on-right p {
+    margin: 0; }
+  .image-on-right canvas {
+    float: right;
+    margin: 10px; }
+
+
+.image-on-left {
+  text-align: left; }
+  .image-on-left img {
+    float: left;
+    margin-right: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;}
+  .image-on-left p {
+    margin: 0; }
+
+.parallax-0 {
+  background-image: url("../img/parallax_image5.jpg"); }
+  .parallax-0 > article img {
+    width: 225px; }
+  .parallax-0 > article h1 {
+    padding-top: 50px; }
+
+.parallax-2 {
+  background-image: url("../img/parallax_image5.jpg");
+  background-size: 100%; }
+  .parallax-2 > article img {
+    width: 300px; }
+  .parallax-2 > article h1 {
+    padding-top: 70px; }
+
+.parallax-3 {
+  background-image: url("../img/parallax_image5.jpg"); }
+  .parallax-3 > article {
+    text-align: center; }
+
+.parallax-4 {
+  background-image: url("../img/parallax_image5.jpg"); }
+  .parallax-4 > article img {
+    width: 400px; }
+  .parallax-4 > article h1 {
+    padding-top: 35px; }
+
+.parallax-5 {
+  background-image: url("../img/parallax_image5.jpg"); }
+
+/*
+* Partial: footer
+*/
+.footer {
+  position: absolute;
+  bottom: 15px; }
+  .footer nav li {
+    float: left;
+    margin-right: 15px; }
+    .footer nav li a {
+      color: #b3b3b1; }
+      .footer nav li a:hover {
+        color: #666665; }
+
+/*
+* Partial: legal
+*/
+.legal h1:first-child {
+  margin-top: 0; }
+.legal h1 {
+  margin: 30px 0 15px 0; }
+.legal p {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-bottom: 20px; }
+  .legal p a {
+    font-size: 1.5rem; }

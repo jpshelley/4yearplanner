@@ -293,7 +293,9 @@ if (isset($_SESSION['netid']))
           <li><a href="logout.php">Logout</a></li>
         </ul>
       </li>
-    </ul>
+      </ul>
+    <div class="menu nav-collapse collapse width"></div>
+
   </div><!-- /.navbar-collapse -->
 </nav>
     
