@@ -311,7 +311,7 @@ body.l-landing {
     padding-top: 50px; }
 
 .parallax-2 {
-  background-image: url("../img/parallax_image5.jpg");
+  background-image: url("../img/parallax_image4.jpg");
   background-size: 100%; }
   .parallax-2 > article img {
     width: 300px; }
@@ -319,19 +319,19 @@ body.l-landing {
     padding-top: 70px; }
 
 .parallax-3 {
-  background-image: url("../img/parallax_image5.jpg"); }
+  background-image: url("../img/parallax_image3.jpg"); }
   .parallax-3 > article {
     text-align: center; }
 
 .parallax-4 {
-  background-image: url("../img/parallax_image5.jpg"); }
+  background-image: url("../img/bigcrowd.jpg"); }
   .parallax-4 > article img {
     width: 400px; }
   .parallax-4 > article h1 {
     padding-top: 35px; }
 
 .parallax-5 {
-  background-image: url("../img/parallax_image5.jpg"); }
+  background-image: url("../img/graduation_banner.jpg"); }
 
 /*
 * Partial: footer

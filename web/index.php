@@ -36,7 +36,7 @@ if (isset($_SESSION['netid']))
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <!-- Bootstrap -->
         <link href="dist/css/bootstrap.min.css" rel="stylesheet">
-	   <link href="style.css" rel="stylesheet">
+	   <link href="css/style.css" rel="stylesheet">
 	   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	   <script>	

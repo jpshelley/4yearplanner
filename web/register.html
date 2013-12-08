@@ -3,16 +3,19 @@
     	<title>Four Years</title>
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <!-- Bootstrap -->
+        <link href="css/maincss.css" rel="stylesheet">
+        <link href="css/main2.css" rel="stylesheet">
 	    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
-	    <link href="styles.css" rel="stylesheet">
+	    <link href="css/style.css" rel="stylesheet">
     </head>
-<body>
+<body class="l-landing" style="zoom: 1;">
     <div class="page-header">
       <h1>Four Years <small>An intelligent planner</small></h1>
     </div>	
+    <section data-type="background" data-speed="10" class="parallax-0 pages">
     <div class="container">
 	<form class="form-signin" action='register.php' method='post'>
-        <h2 class="form-signin-heading">Please Enter Your Information</h2>
+        <h2 class="form-signin-heading" style="margin-top: 50px; text-align: center;">Please Enter Your Information</h2>
         <h5 style='font-style:italic; color:red'><?= $errMsg ?></h5>
 		<input type='text' class="form-control" placeholder="First Name" name='first' required><br>
 		<input type='text'class="form-control" placeholder="Last Name" name='last' required><br>
@@ -25,6 +28,7 @@
 	</form>
 
 	</div> <!-- /container -->
+    </section>
 	<datalist id='majors'>
 		<?php
 			foreach(get_majors() as $major)
