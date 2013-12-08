@@ -187,3 +187,174 @@ color: #fff;
 background-color: #FDC82F;
 }
 
+.sliding {
+ 
+ background-image: url("../img/hamburger.png");
+ background-repeat: no-repeat;
+}
+
+
+/*=================== Specific Elements ===================*/                      
+#sidebar{
+    display: block;
+    width: auto;
+    height: 100%;
+    color: #3a4447;
+    background-color: #3a4447;
+    position: fixed;
+    overflow: auto;            
+    font-family: Montserrat, sans-serif;
+    z-index: 0;
+}
+        
+    #sidebar_inner{
+        min-height: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+
+        #sidebar_border{
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            right: 0px;
+            /* background-color: #bdbbbc; */
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 15px;
+            z-index: 20;
+        }
+        
+        #sidebar a{
+            width: 320px;
+        }
+        
+        #sidebar #sidebar_logo{
+            display: block;
+            text-align: center;
+            padding: 20px 0px;
+        }
+        
+                #sidebar #sidebar_logo img{
+                    display: block;
+                    margin: 0px auto;
+                    max-width: 80%;
+                }
+        
+        #sidebar a.menu{
+            display: block;
+            position: relative;
+            padding: 0.5em 0em;
+            color: #3a4447;
+            text-decoration: none;
+            z-index: 10;
+            overflow: hidden;
+            font-size: 1.5em;
+        }
+        
+        #sidebar a.menu:hover, #sidebar a.menu.current{
+            /* background-color: rgba(114, 196, 192, 0.5); */
+            background-color: #72c4c0;
+        }
+                                
+                #sidebar a.menu img{
+                    display: inline-block;
+                    margin: 10px 6% 1px 6%;
+                    width: 21%;
+                    vertical-align: top;
+                }
+                
+                #sidebar a.menu span.menu_text{
+                    display: inline-block;
+                    width: 65%;
+                    margin-right: 2%;
+                }
+        
+                #sidebar a.menu strong{
+                        font-weight: bold;
+                        font-size: 2.2em;
+                        line-height: 1em;
+                }
+                
+                #sidebar a.menu span{
+                        display: block;
+                }
+                        
+                #sidebar #utility_nav{
+                margin-top: 2em;
+                }
+                
+                    #sidebar #utility_nav a.menu{
+                    font-size: 1em;
+                    padding: 0.2em 0em 0.2em 1.5em;
+                    width: auto;
+                    }
+                    
+                    #sidebar #utility_nav a.menu:hover{
+                        background: none;
+                        color: #72c4c0;
+                    }
+                    
+                        #sidebar #utility_nav a.menu .icon{
+                            margin-top: 0px;
+                            vertical-align: middle;
+                            display: inline-block;
+                            background-size: auto 100%;
+                            background-position: left top;
+                            width: 2.63em;
+                            height: 2em;
+                            margin-right: 1em;
+                        }
+                        
+                        #sidebar #utility_nav a.menu:hover .icon{
+                            background-position: right top;
+                        }
+                        
+                        #nav_find_friends .icon{
+                            background-image: url('../images/menu-icon-ff-sprite.png');
+                        }
+                        
+                        #nav_profile .icon, #nav_logout .icon{
+                            background-image: url('../images/menu-icon-prof-sprite.png');
+                        }
+                        
+                        #nav_settings .icon{
+                            background-image: url('../images/menu-icon-sett-sprite.png');
+                        }
+                        
+                        #sidebar #utility_nav a.menu .menu_text{
+                            font-size: 1.3em;
+                            vertical-align: middle;
+                            line-height: 1.8em;
+                        }
+        
+        #content{
+            color: #3a4447;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            background-color: #ffffff;
+        }
+        
+        #content.sidebar_open{
+            margin-left: 320px;
+        }            
+
+        #sidebar_toggle{
+            background-image: url('../img/hamburger.png');
+            background-repeat: no-repeat;
+        }
+                
+                #inner_content{
+                    padding: 20px 10px;
+                    position: relative;
+                }
+                
+                #inner_content.list{
+                    padding-left: 0px;
+                    padding-right: 0px;
+                }
+                
+                #inner_content.no_padding{
+                    padding: 0px;
+                }
+

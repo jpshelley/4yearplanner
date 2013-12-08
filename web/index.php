@@ -276,12 +276,6 @@ if (isset($_SESSION['netid']))
       <li><a href="#">Classes</a></li>
       <li><a href="analytics.html">Analytics</a></li>
     </ul>
-    <form class="navbar-form navbar-right" autocomplete="on" role="search">
-      <div class="form-group">
-        <input type="text" class="form-control"  placeholder="Search">
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="http://www.iastate.edu">Iowa State</a></li>
       <li class="dropdown">
@@ -293,12 +287,23 @@ if (isset($_SESSION['netid']))
           <li><a href="logout.php">Logout</a></li>
         </ul>
       </li>
+      <li><input type="image" src="img/hamburger.png" name="openMenu" id="sidebar_toggle" /></li>
       </ul>
     <div class="menu nav-collapse collapse width"></div>
 
   </div><!-- /.navbar-collapse -->
 </nav>
     
+
+<div id="sidebar">
+    <div id="sidebar_inner">
+    	<div id="sidebar_border"></div>
+        
+    </div><!-- #sidebar_inner -->
+</div><!-- #sidebar -->
+    
+
+<div id="content">
 <div class="alert alert-success alert-dismissable">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <h3 id="progress-title">Your Current Progress</h3>
@@ -422,6 +427,7 @@ if (isset($_SESSION['netid']))
         </div>
     </div>
 </footer>
+</div>
         <script>
         /*
         var xhr;
@@ -445,7 +451,22 @@ if (isset($_SESSION['netid']))
         */
         </script>
 	    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    
+        <script>
+            $('#sidebar_toggle').click(function(){
+	           var content_position = $('#content').offset();
+		      if(content_position.left > 0){
+			     $('#content').not('#tag_button.relative').stop(true, true).removeClass('sidebar_open', 400, 'linear', function(){
+                    $('#sidebar_toggle').removeClass('open');
+			     });
+		      } else {
+
+			     var open_width = $('#sidebar').outerWidth();
+			     $('#content').not('#tag_button.relative').stop(true, true).addClass('sidebar_open', 400, 'linear', function(){
+				    $('#sidebar_toggle').addClass('open');
+			     });
+		      }
+	       });
+        </script>
 	    <script src="dist/js/bootstrap.min.js"></script>
         <script src="js/chart/Chart.min.js"></script>
     </body>
