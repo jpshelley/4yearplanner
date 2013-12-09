@@ -68,7 +68,9 @@ function addClass($semester, $classes)
 	   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	   <script>	
-           
+
+	   var semesterToAddTo;
+       
         $(function() {
            var courseArr = <?php echo json_encode($all_classes_results); ?>;
            var courses = courseArr[0];
@@ -76,6 +78,7 @@ function addClass($semester, $classes)
                $("#sidebar_inner").append("<a class='menu'>" + courses[i][0] + "</a>");
            }
         });
+        
 		$(function() {
 		  $( "#accordion" ).accordion();
 		});
@@ -285,8 +288,11 @@ function addClass($semester, $classes)
 			
 			
 		});
+
+		
 		
 		$(".addClass").click(function(){
+			semesterToAddTo = $(this).parent().parent();
 			$("#classbar").css("visibility", "visible");
 			$("#allSemesters").animate({width:"950px"},{duration: 400, queue: false });
 		});
@@ -303,8 +309,19 @@ function addClass($semester, $classes)
 		});
 		
 		$("#courseListOk").click(function(){
-			$("#classbar").css("visibility", "hidden");
+
+			$(".courseListRow").each(function(i){
+				
+				var course = $(this).children(":first");
+				var className = course.text().trim();
+
+				if(course.parent().css("border-color") != 'rgb(255, 231, 191)'){
+					semesterToAddTo.find(".classes").append("<div class=\"course\"><p><b>" + className + "</b></p><p>3 cr.</p></div>");
+				}
+			});
+
 			$(".courseListRow").css("border", "#FFE7BF solid 1px");
+			$("#classbar").css("visibility", "hidden");
 			$("#allSemesters").animate({width:"1170px"},{duration: 400, queue: false });
 			
 		});
@@ -377,9 +394,6 @@ function addClass($semester, $classes)
 						<p class="semesterHeaderTitle" id="semester1">Fall 2010</p>
 					</div>
 					<div class="classes col-md-10">
-						<div class="course">
-							
-						</div>
 					</div>
 					<div class="col-xs-1" style="width: 33px;">
 						<button type="button" class="addClass addIcon btn btn-default btn-sm">
@@ -392,9 +406,6 @@ function addClass($semester, $classes)
 						<p class="semesterHeaderTitle" id="semester1">Spring 2010</p>
 					</div>
 					<div class="classes col-md-10">
-						<div class="course">
-							
-						</div>
 					</div>
 					<div class="col-xs-1" style="width: 33px;">
 						<button type="button" class="addClass addIcon btn btn-default btn-sm">
@@ -407,9 +418,6 @@ function addClass($semester, $classes)
 						<p class="semesterHeaderTitle" id="semester1">Fall 2010</p>
 					</div>
 					<div class="classes col-md-10">
-						<div class="course">
-							
-						</div>
 					</div>
 					<div class="col-xs-1" style="width: 33px;">
 						<button type="button" class="addClass addIcon btn btn-default btn-sm">
@@ -422,18 +430,12 @@ function addClass($semester, $classes)
 						<p class="semesterHeaderTitle" id="semester1">Fall 2010</p>
 					</div>
 					<div class="classes col-md-10">
-						<div class="course">
-							
-						</div>
 					</div>
 					<div class="col-xs-1" style="width: 33px;">
 						<button type="button" class="addClass addIcon btn btn-default btn-sm">
 							<span class="glyphicon glyphicon-plus"></span>
 						</button>
 					</div>
-			</div>
-			<div class = "semester row">
-			
 			</div>
 		</div>
 		<div id = "classbar" class="container">
