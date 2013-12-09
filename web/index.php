@@ -433,7 +433,7 @@ function addClass($semester, $classes)
 					<h4>Course List</h4>
 				</div>
 			</div>
-			<div class="container">
+			<div class="container" style="overflow-y:scroll;">
 				<div class="courseListRow row">
 					<div class="col-md-12">
 						CS 229
@@ -462,107 +462,6 @@ function addClass($semester, $classes)
 			</div>
 		</div>
 	</span>
-	<!--
-    <div id="electivedialog" style="opacity:0"></div>
-        <div id="wrap">
-        
-        <div class="info-col">
-    	       <h2>User</h2>
-    	       <dl>
-            <dt id="starter">Student Information</dt>
-    			<dd>
-				Name: <?php echo $name; ?>
-				<br>
-				Add Classes here.	   
-    	  		</dd>
-			<dt id="major">Degree Information</dt>
-    			<dd>
-				Major: 
-				<a href="http://www.se.iastate.edu/academics/resources/">Software Engineering</a>
-    	  		</dd>
-				
-			<dt id="completed">Completed Courses</dt>
-    			<dd>
-				Required Classes
-				<br><br>
-				Technical Electives
-				<br><br>
-				Supplemental Electives
-    	  		</dd>
-    	 </dl>
-        </div>
-       
-        <div class="info-col">
-           <h2>Classes</h2>
-           <dl>
-        <dt>Fall 2010</dt>
-            <dd>
-                <div id="sem1" class="semesterBlock">
-				<div></div>
-              	<ul>
-				</ul>
-              	</div>
-              </dd>
-        <dt>Spring 2011</dt>
-            <dd>
-                <div id="sem2" class="semesterBlock">
-				<div></div>
-              	<ul>	
-				</ul>
-              	</div>
-              </dd>
-        <dt>Fall 2011</dt>
-            <dd>
-                <div id="sem3" class="semesterBlock">
-                <div></div>
-              	<ul>
-				</ul>
-              	</div>
-		     </dd>
-        <dt>Spring 2012</dt>
-            <dd>
-                <div id="sem4" class="semesterBlock">
-                <div></div>
-              	<ul>
-				</ul>
-              	</div>
-		      </dd>
-        <dt>Fall 2012</dt>
-		  	<dd>
-              <div id="sem5" class="semesterBlock">
-			  <div></div>
-              	<ul>	
-				</ul>
-              	</div>
-		     </dd>
-        <dt>Spring 2013</dt>
-		  	<dd>
-                <div id="sem6" class="semesterBlock">
-                <div></div>
-                <ul>
-				</ul>
-              	</div>
-		     </dd>
-        <dt>Fall 2013</dt>
-            <dd>
-                <div id="sem7" class="semesterBlock">
-                <div></div>
-              	<ul>
-				</ul>
-              	</div>
-		     </dd>
-        <dt>Spring 2014</dt>
-            <dd>
-                <div id="sem8" class="semesterBlock">
-                <div></div>
-              	<ul>
-				</ul>
-              	</div>
-		     </dd>
-		</dl>
-	</div>
-    </div>
-	 -->				
 </div>
 
 <footer class="panel footer">
