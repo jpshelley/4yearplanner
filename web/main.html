@@ -97,6 +97,7 @@
     <script src="js/chart/Chart.js"></script>
     <script>
         $('#analyzeChart').waypoint(function(direction) {
+            alert("@");
          var doughnutData = [ {
                             value: 30,
                             color:"#F7464A"},
@@ -111,8 +112,6 @@
                         ];
         var myDoughnut = new Chart(document.getElementById("analyzeChart").getContext("2d")).Doughnut(doughnutData);
         }, { offset: '30%' });
-        
-       
     </script>
 </body>
 </html>

@@ -26,6 +26,15 @@ if (isset($_SESSION['netid']))
 		$stmt_sem->execute($params);
 		$sem_courses[$i] = $stmt_sem->fetchAll();
 	}
+    
+    // Get Courses for Class Listing
+    $stmt_courses = $database->prepare("SELECT course_name FROM course");
+    $stmt_courses->execute();
+    $all_classes_results = array();
+    for($i = 0; $i < 30; $i++){
+        $all_classes_results[$i] = $stmt_courses->fetchAll();
+    }
+
 }
 
 ?>
@@ -40,6 +49,14 @@ if (isset($_SESSION['netid']))
 	   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	   <script>	
+           
+        $(function() {
+           var courseArr = <?php echo json_encode($all_classes_results); ?>;
+           var courses = courseArr[0];
+           for(var i = 0; i < courses.length; i++){
+               $("#sidebar_inner").append("<a class='menu'>" + courses[i][0] + "</a>");
+           }
+        });
 		$(function() {
 		  $( "#accordion" ).accordion();
 		});
@@ -295,8 +312,8 @@ if (isset($_SESSION['netid']))
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">User</a></li>
-      <li><a href="#">Classes</a></li>
+      <li class="active" id="class_toggle"><a href="#">User</a></li>
+      <li id="sidebar_toggle"><a href="#">Classes</a></li>
       <li><a href="analytics.html">Analytics</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
@@ -310,21 +327,14 @@ if (isset($_SESSION['netid']))
           <li><a href="logout.php">Logout</a></li>
         </ul>
       </li>
-      <li><input type="image" src="img/hamburger.png" name="openMenu" id="sidebar_toggle" /></li>
     </ul>
   </div><!-- /.navbar-collapse -->
 </nav>
     
 <div id="sidebar">
-    <div id="siebar_inner">
+    <div id="sidebar_inner">
       <div id="sidebar_border"></div>
         <h2>Classes</h2>
-        
-        <a class="menu">Example Class 1</a>
-        <a class="menu">Example Class 2</a>
-        <a class="menu">Example Class 3</a>
-        <a class="menu">Example Class 4</a>
-
     </div><!-- #sidebar_inner -->
 </div><!-- #sidebar -->
     
@@ -586,19 +596,23 @@ if (isset($_SESSION['netid']))
         <script>
             
             $( document ).ready(function() {
-                alert( "ready!" );
+                ('#')
             });
             $('#sidebar_toggle').click(function(){
                    var content_position = $('#content').offset();
                       if(content_position.left > 0){
                              $('#content').not('#tag_button.relative').stop(true, true).removeClass('sidebar_open', 400, 'linear', function(){
                     $('#sidebar_toggle').removeClass('open');
+                    $('#sidebar_toggle').removeClass('active');
+
                              });
                       } else {
 
                              var open_width = $('#menubar').outerWidth();
                              $('#content').not('#tag_button.relative').stop(true, true).addClass('sidebar_open', 400, 'linear', function(){
                                     $('#sidebar_toggle').addClass('open');
+                                    $('#sidebar_toggle').addClass('active');
+                                    $('#class_toggle').removeClass('active');
                              });
                       }
                });

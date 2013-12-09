@@ -453,8 +453,6 @@ button.addIcon{
         }            
 
         #sidebar_toggle{
-            background-image: url('../img/hamburger.png');
-            background-repeat: no-repeat;
         }
                 
                 #inner_content{
