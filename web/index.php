@@ -28,7 +28,7 @@ if (isset($_SESSION['netid']))
 	}
     
     // Get Courses for Class Listing
-    $stmt_courses = $database->prepare("SELECT course_name FROM course");
+    $stmt_courses = $database->prepare("SELECT course_name, url FROM course");
     $stmt_courses->execute();
     $all_classes_results = array();
     for($i = 0; $i < 30; $i++){
@@ -75,11 +75,11 @@ function addClass($semester, $classes)
            var courseArr = <?php echo json_encode($all_classes_results); ?>;
            var courses = courseArr[0];
            for(var i = 0; i < courses.length; i++){
-               $("#sidebar_inner").append("<a class='menu'>" + courses[i][0] + "</a>");
+               $("#sidebar_inner").append("<a class='menu' href='#'  title=" + courses[i][1]+ ">" + courses[i][0] + "</a>");
            }
         });
-        
-		$(function() {
+
+        $(function() {
 		  $( "#accordion" ).accordion();
 		});
 		
@@ -383,6 +383,24 @@ function addClass($semester, $classes)
     
 
 <div id="content">
+
+ <div id="overlay" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Course</h4>
+      </div>
+      <div class="modal-body">
+              <iframe id="course-overlay" class="well well-sm" style="height: 500px; background-color: #822433;" src=""></iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+    
 <div class="alert alert-success alert-dismissable">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <h3 id="progress-title">Your Current Progress</h3>
@@ -529,9 +547,16 @@ function addClass($semester, $classes)
 	    <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script>
             
-            $( document ).ready(function() {
-                ('#')
+            // popover demo
+            $(function(){
+                $('.menu').click(function(){
+                    var title = $(this).attr( "title" );
+                    $('#overlay').modal('show');
+                    $('#course-overlay').attr('src', title);
+                });
             });
+
+            
             $('#sidebar_toggle').click(function(){
                    var content_position = $('#content').offset();
                       if(content_position.left > 0){
