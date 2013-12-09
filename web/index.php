@@ -316,14 +316,22 @@ function addClass($semester, $classes)
 				var className = course.text().trim();
 
 				if(course.parent().css("border-color") != 'rgb(255, 231, 191)'){
-					semesterToAddTo.find(".classes").append("<div class=\"course\"><p><b>" + className + "</b></p><p>3 cr.</p></div>");
+					semesterToAddTo.find(".classes").append("<div class=\"course\"><div class=\"courseClose\">X</div><p><b>" + className + "</b></p><p>3 cr.</p></div>");
 				}
 			});
 
 			$(".courseListRow").css("border", "#FFE7BF solid 1px");
 			$("#classbar").css("visibility", "hidden");
 			$("#allSemesters").animate({width:"1170px"},{duration: 400, queue: false });
+
+			$(".courseClose").click(function(){
+				$(this).parent().remove();
+			});
 			
+		});
+
+		$(".courseClose").click(function(){
+			$(this).parent().remove();
 		});
 	    
 	});
@@ -394,6 +402,13 @@ function addClass($semester, $classes)
 						<p class="semesterHeaderTitle" id="semester1">Fall 2010</p>
 					</div>
 					<div class="classes col-md-10">
+						<div class="course">
+							<div class="courseClose">
+							X
+							</div>
+							<p><b>Com S 229</b></p>
+							<p>3 cr.</p>
+						</div>
 					</div>
 					<div class="col-xs-1" style="width: 33px;">
 						<button type="button" class="addClass addIcon btn btn-default btn-sm">
@@ -447,12 +462,12 @@ function addClass($semester, $classes)
 			<div class="container" style="overflow-y:scroll;">
 				<div class="courseListRow row">
 					<div class="col-md-12">
-						CS 229
+						Com S 229
 					</div>
 				</div>
 				<div class="courseListRow row">
 					<div class="col-md-12">
-						CS 309
+						Com S 309
 					</div>
 				</div>
 				<div class="courseListRow row">
@@ -462,7 +477,7 @@ function addClass($semester, $classes)
 				</div>
 				<div class="courseListRow row">
 					<div class="col-md-12">
-						CS 228
+						Com S 228
 					</div>
 				</div>
 			</div>
