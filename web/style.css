@@ -201,6 +201,10 @@ background-color: #FDC82F;
 	display: inline-block;
 }
 
+#allSemesters{
+	float:left;
+}
+
 .semester{
 	width: 100%;
 	height: 160px;
@@ -209,9 +213,10 @@ background-color: #FDC82F;
 	border-width: thin;
 	border-color: #FFDD75;
 	border-radius: 15px;
-	padding: 10px;
+	padding-left: 10px;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	padding-right: 0px;
 	margin: 5px;
 	
 }

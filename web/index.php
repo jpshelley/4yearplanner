@@ -252,6 +252,7 @@ if (isset($_SESSION['netid']))
 		
 		$(".addClass").click(function(){
 			$("#sideBar").css("visibility", "visible");
+			$("#allSemesters").animate({width:"950px"},{duration: 400, queue: false });
 		});
 		
 		$(".courseListRow").click(function(){
@@ -262,12 +263,14 @@ if (isset($_SESSION['netid']))
 			else{
 				$(this).css("border", "#FFE7BF solid 1px");
 			}
-			
+
 		});
 		
 		$("#courseListOk").click(function(){
 			$("#sideBar").css("visibility", "hidden");
 			$(".courseListRow").css("border", "#FFE7BF solid 1px");
+			$("#allSemesters").animate({width:"1170px"},{duration: 400, queue: false });
+			
 		});
 	    
 	});
@@ -330,7 +333,7 @@ if (isset($_SESSION['netid']))
     
 <div class = "schedule">
 	<span>
-		<div class="container">
+		<div id="allSemesters" class="container">
 			<div class = "semester row">
 					<div class="semesterHeader col-md-1">
 						<p class="semesterHeaderTitle" id="semester1">Fall 2010</p>
