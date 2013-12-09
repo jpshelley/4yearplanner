@@ -163,6 +163,10 @@ height: 204px;
     display: inline;
 }
 
+.navbar{
+ margin-bottom: -5px;   
+}
+
 #navcontainer ul
 {
 margin: 0;
@@ -269,7 +273,7 @@ button.addIcon{
 	text-align: center;
 }
 
-#sideBar{
+#classbar{
 	position: absolute;
 	right: 50px;
 	top: 300px;
@@ -308,7 +312,7 @@ button.addIcon{
     width: auto;
     height: 100%;
     color: #3a4447;
-    background-color: #3a4447;
+    background-color: #EDEEEF;
     position: fixed;
     overflow: auto;            
     font-family: Montserrat, sans-serif;
@@ -361,7 +365,8 @@ button.addIcon{
         
         #sidebar a.menu:hover, #sidebar a.menu.current{
             /* background-color: rgba(114, 196, 192, 0.5); */
-            background-color: #72c4c0;
+            background-color: #822433;
+            color: #ffffff;
         }
                                 
                 #sidebar a.menu img{

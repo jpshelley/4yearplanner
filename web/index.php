@@ -251,7 +251,7 @@ if (isset($_SESSION['netid']))
 		});
 		
 		$(".addClass").click(function(){
-			$("#sideBar").css("visibility", "visible");
+			$("#classbar").css("visibility", "visible");
 			$("#allSemesters").animate({width:"950px"},{duration: 400, queue: false });
 		});
 		
@@ -267,7 +267,7 @@ if (isset($_SESSION['netid']))
 		});
 		
 		$("#courseListOk").click(function(){
-			$("#sideBar").css("visibility", "hidden");
+			$("#classbar").css("visibility", "hidden");
 			$(".courseListRow").css("border", "#FFE7BF solid 1px");
 			$("#allSemesters").animate({width:"1170px"},{duration: 400, queue: false });
 			
@@ -280,7 +280,7 @@ if (isset($_SESSION['netid']))
 <body>
     
     
-    <nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -310,17 +310,23 @@ if (isset($_SESSION['netid']))
           <li><a href="logout.php">Logout</a></li>
         </ul>
       </li>
-      <li><input type="image" src="img/hamburger.png" name="openMenu" id="menubar_toggle" /></li>
+      <li><input type="image" src="img/hamburger.png" name="openMenu" id="sidebar_toggle" /></li>
     </ul>
   </div><!-- /.navbar-collapse -->
 </nav>
     
-<div id="menubar">
-    <div id="menubar_inner">
-      <div id="menubar_border"></div>
+<div id="sidebar">
+    <div id="siebar_inner">
+      <div id="sidebar_border"></div>
+        <h2>Classes</h2>
         
-    </div><!-- #menubar_inner -->
-</div><!-- #menubar -->
+        <a class="menu">Example Class 1</a>
+        <a class="menu">Example Class 2</a>
+        <a class="menu">Example Class 3</a>
+        <a class="menu">Example Class 4</a>
+
+    </div><!-- #sidebar_inner -->
+</div><!-- #sidebar -->
     
 
 <div id="content">
@@ -402,7 +408,7 @@ if (isset($_SESSION['netid']))
 			
 			</div>
 		</div>
-		<div id = "sideBar" class="container">
+		<div id = "classbar" class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<h4>Course List</h4>
@@ -578,20 +584,26 @@ if (isset($_SESSION['netid']))
         </script>
 	    <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script>
-            $('#menubar_toggle').click(function(){
+            
+            $( document ).ready(function() {
+                alert( "ready!" );
+            });
+            $('#sidebar_toggle').click(function(){
                    var content_position = $('#content').offset();
                       if(content_position.left > 0){
                              $('#content').not('#tag_button.relative').stop(true, true).removeClass('sidebar_open', 400, 'linear', function(){
-                    $('#menubar_toggle').removeClass('open');
+                    $('#sidebar_toggle').removeClass('open');
                              });
                       } else {
 
                              var open_width = $('#menubar').outerWidth();
                              $('#content').not('#tag_button.relative').stop(true, true).addClass('sidebar_open', 400, 'linear', function(){
-                                    $('#menubar_toggle').addClass('open');
+                                    $('#sidebar_toggle').addClass('open');
                              });
                       }
                });
+            
+            
         </script>
 	    <script src="dist/js/bootstrap.min.js"></script>
         <script src="js/chart/Chart.min.js"></script>
