@@ -331,7 +331,6 @@ function addClass($semester, $classes)
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-      <li class="active" id="class_toggle"><a href="#">User</a></li>
       <li id="sidebar_toggle"><a href="#">Classes</a></li>
       <li><a href="analytics.html">Analytics</a></li>
     </ul>
