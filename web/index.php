@@ -36,7 +36,7 @@ if (isset($_SESSION['netid']))
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <!-- Bootstrap -->
         <link href="dist/css/bootstrap.min.css" rel="stylesheet">
-	   <link href="style.css" rel="stylesheet">
+	   <link href="css/style.css" rel="stylesheet">
 	   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	   <script>	
@@ -299,12 +299,6 @@ if (isset($_SESSION['netid']))
       <li><a href="#">Classes</a></li>
       <li><a href="analytics.html">Analytics</a></li>
     </ul>
-    <form class="navbar-form navbar-right" autocomplete="on" role="search">
-      <div class="form-group">
-        <input type="text" class="form-control"  placeholder="Search">
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="http://www.iastate.edu">Iowa State</a></li>
       <li class="dropdown">
@@ -316,10 +310,20 @@ if (isset($_SESSION['netid']))
           <li><a href="logout.php">Logout</a></li>
         </ul>
       </li>
+      <li><input type="image" src="img/hamburger.png" name="openMenu" id="menubar_toggle" /></li>
     </ul>
   </div><!-- /.navbar-collapse -->
 </nav>
     
+<div id="menubar">
+    <div id="menubar_inner">
+      <div id="menubar_border"></div>
+        
+    </div><!-- #menubar_inner -->
+</div><!-- #menubar -->
+    
+
+<div id="content">
 <div class="alert alert-success alert-dismissable">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <h3 id="progress-title">Your Current Progress</h3>
@@ -549,6 +553,7 @@ if (isset($_SESSION['netid']))
         </div>
     </div>
 </footer>
+</div>
         <script>
         /*
         var xhr;
@@ -572,7 +577,22 @@ if (isset($_SESSION['netid']))
         */
         </script>
 	    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    
+        <script>
+            $('#menubar_toggle').click(function(){
+                   var content_position = $('#content').offset();
+                      if(content_position.left > 0){
+                             $('#content').not('#tag_button.relative').stop(true, true).removeClass('sidebar_open', 400, 'linear', function(){
+                    $('#menubar_toggle').removeClass('open');
+                             });
+                      } else {
+
+                             var open_width = $('#menubar').outerWidth();
+                             $('#content').not('#tag_button.relative').stop(true, true).addClass('sidebar_open', 400, 'linear', function(){
+                                    $('#menubar_toggle').addClass('open');
+                             });
+                      }
+               });
+        </script>
 	    <script src="dist/js/bootstrap.min.js"></script>
         <script src="js/chart/Chart.min.js"></script>
     </body>
