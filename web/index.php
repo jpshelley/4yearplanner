@@ -196,6 +196,25 @@ function addClass($semester, $classes)
 			return false;
 		});
 		
+		//Haytham
+		$(".course").click( function(){
+			
+			var coursename = $('p:first', this).text();
+			var netid = "<?php echo $_SESSION['netid']; ?>";
+			
+			if($(this).hasClass("courseComplete")) {
+				$(this).removeClass("courseComplete");
+				//$.post('complete_course.php', {course_name: "Com S 229", net_id: "jbravo", complete: "false"});
+				$.post('complete_course.php', {course_name: coursename, net_id: netid, complete: "false"});
+			} else {
+				$(this).addClass("courseComplete");
+				//$.post('complete_course.php', {course_name: "Com S 229", net_id: "jbravo", complete: "true"});
+				$.post('complete_course.php', {course_name: coursename, net_id: netid, complete: "true"});
+			}
+			
+		
+		});
+		
 	    // clicking on titles does stuff
 	    $("#wrap").delegate("dt", "click", function() {
 	        
@@ -420,7 +439,7 @@ function addClass($semester, $classes)
 						<p class="semesterHeaderTitle" id="semester1">Fall 2010</p>
 					</div>
 					<div class="classes col-md-10">
-						<div class="course">
+						<div class="course" >
 							<div class="courseClose">
 							X
 							</div>
