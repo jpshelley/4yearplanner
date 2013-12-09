@@ -36,7 +36,7 @@ if (isset($_SESSION['netid']))
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <!-- Bootstrap -->
         <link href="dist/css/bootstrap.min.css" rel="stylesheet">
-	   <link href="css/style.css" rel="stylesheet">
+	   <link href="style.css" rel="stylesheet">
 	   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	   <script>	
@@ -249,6 +249,26 @@ if (isset($_SESSION['netid']))
 			
 			
 		});
+		
+		$(".addClass").click(function(){
+			$("#sideBar").css("visibility", "visible");
+		});
+		
+		$(".courseListRow").click(function(){
+			var color = $(this).css("border-color");
+			if($(this).css("border-color") == 'rgb(255, 231, 191)'){
+				$(this).css("border", "green solid 1px");
+			}
+			else{
+				$(this).css("border", "#FFE7BF solid 1px");
+			}
+			
+		});
+		
+		$("#courseListOk").click(function(){
+			$("#sideBar").css("visibility", "hidden");
+			$(".courseListRow").css("border", "#FFE7BF solid 1px");
+		});
 	    
 	});
         
@@ -276,6 +296,12 @@ if (isset($_SESSION['netid']))
       <li><a href="#">Classes</a></li>
       <li><a href="analytics.html">Analytics</a></li>
     </ul>
+    <form class="navbar-form navbar-right" autocomplete="on" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control"  placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="http://www.iastate.edu">Iowa State</a></li>
       <li class="dropdown">
@@ -287,23 +313,10 @@ if (isset($_SESSION['netid']))
           <li><a href="logout.php">Logout</a></li>
         </ul>
       </li>
-      <li><input type="image" src="img/hamburger.png" name="openMenu" id="sidebar_toggle" /></li>
-      </ul>
-    <div class="menu nav-collapse collapse width"></div>
-
+    </ul>
   </div><!-- /.navbar-collapse -->
 </nav>
     
-
-<div id="sidebar">
-    <div id="sidebar_inner">
-    	<div id="sidebar_border"></div>
-        
-    </div><!-- #sidebar_inner -->
-</div><!-- #sidebar -->
-    
-
-<div id="content">
 <div class="alert alert-success alert-dismissable">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <h3 id="progress-title">Your Current Progress</h3>
@@ -315,15 +328,120 @@ if (isset($_SESSION['netid']))
     </div>
 </div>
     
-<div>
+<div class = "schedule">
+	<span>
+		<div class="container">
+			<div class = "semester row">
+					<div class="semesterHeader col-md-1">
+						<p class="semesterHeaderTitle" id="semester1">Fall 2010</p>
+					</div>
+					<div class="classes col-md-10">
+						<div class="course">
+							
+						</div>
+					</div>
+					<div class="col-xs-1" style="width: 33px;">
+						<button type="button" class="addClass addIcon btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</div>
+			</div>
+			<div class = "semester row">
+					<div class="semesterHeader col-md-1">
+						<p class="semesterHeaderTitle" id="semester1">Spring 2010</p>
+					</div>
+					<div class="classes col-md-10">
+						<div class="course">
+							
+						</div>
+					</div>
+					<div class="col-xs-1" style="width: 33px;">
+						<button type="button" class="addClass addIcon btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</div>
+			</div>
+			<div class = "semester row">
+					<div class="semesterHeader col-md-1">
+						<p class="semesterHeaderTitle" id="semester1">Fall 2010</p>
+					</div>
+					<div class="classes col-md-10">
+						<div class="course">
+							
+						</div>
+					</div>
+					<div class="col-xs-1" style="width: 33px;">
+						<button type="button" class="addClass addIcon btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</div>
+			</div>
+			<div class = "semester row">
+					<div class="semesterHeader col-md-1">
+						<p class="semesterHeaderTitle" id="semester1">Fall 2010</p>
+					</div>
+					<div class="classes col-md-10">
+						<div class="course">
+							
+						</div>
+					</div>
+					<div class="col-xs-1" style="width: 33px;">
+						<button type="button" class="addClass addIcon btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</div>
+			</div>
+			<div class = "semester row">
+			
+			</div>
+		</div>
+		<div id = "sideBar" class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h4>Course List</h4>
+				</div>
+			</div>
+			<div class="container">
+				<div class="courseListRow row">
+					<div class="col-md-12">
+						CS 229
+					</div>
+				</div>
+				<div class="courseListRow row">
+					<div class="col-md-12">
+						CS 309
+					</div>
+				</div>
+				<div class="courseListRow row">
+					<div class="col-md-12">
+						SE 329
+					</div>
+				</div>
+				<div class="courseListRow row">
+					<div class="col-md-12">
+						CS 228
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<button id="courseListOk" type="button">
+					OK
+				</button>
+			</div>
+		</div>
+	</span>
+	<!--
     <div id="electivedialog" style="opacity:0"></div>
         <div id="wrap">
+        
         <div class="info-col">
     	       <h2>User</h2>
     	       <dl>
             <dt id="starter">Student Information</dt>
     			<dd>
 				Name: <?php echo $name; ?>
+				<br>
+				Add Classes here.	   
     	  		</dd>
 			<dt id="major">Degree Information</dt>
     			<dd>
@@ -341,13 +459,14 @@ if (isset($_SESSION['netid']))
     	  		</dd>
     	 </dl>
         </div>
+       
         <div class="info-col">
            <h2>Classes</h2>
            <dl>
         <dt>Fall 2010</dt>
             <dd>
                 <div id="sem1" class="semesterBlock">
-				<div style="display: none"></div>
+				<div></div>
               	<ul>
 				</ul>
               	</div>
@@ -355,7 +474,7 @@ if (isset($_SESSION['netid']))
         <dt>Spring 2011</dt>
             <dd>
                 <div id="sem2" class="semesterBlock">
-				<div style="display: none"></div>
+				<div></div>
               	<ul>	
 				</ul>
               	</div>
@@ -363,7 +482,7 @@ if (isset($_SESSION['netid']))
         <dt>Fall 2011</dt>
             <dd>
                 <div id="sem3" class="semesterBlock">
-                <div style="display: none"></div>
+                <div></div>
               	<ul>
 				</ul>
               	</div>
@@ -371,7 +490,7 @@ if (isset($_SESSION['netid']))
         <dt>Spring 2012</dt>
             <dd>
                 <div id="sem4" class="semesterBlock">
-                <div style="display: none"></div>
+                <div></div>
               	<ul>
 				</ul>
               	</div>
@@ -379,7 +498,7 @@ if (isset($_SESSION['netid']))
         <dt>Fall 2012</dt>
 		  	<dd>
               <div id="sem5" class="semesterBlock">
-			  <div style="display: none"></div>
+			  <div></div>
               	<ul>	
 				</ul>
               	</div>
@@ -387,7 +506,7 @@ if (isset($_SESSION['netid']))
         <dt>Spring 2013</dt>
 		  	<dd>
                 <div id="sem6" class="semesterBlock">
-                <div style="display: none"></div>
+                <div></div>
                 <ul>
 				</ul>
               	</div>
@@ -395,7 +514,7 @@ if (isset($_SESSION['netid']))
         <dt>Fall 2013</dt>
             <dd>
                 <div id="sem7" class="semesterBlock">
-                <div style="display: none"></div>
+                <div></div>
               	<ul>
 				</ul>
               	</div>
@@ -403,7 +522,7 @@ if (isset($_SESSION['netid']))
         <dt>Spring 2014</dt>
             <dd>
                 <div id="sem8" class="semesterBlock">
-                <div style="display: none"></div>
+                <div></div>
               	<ul>
 				</ul>
               	</div>
@@ -411,7 +530,7 @@ if (isset($_SESSION['netid']))
 		</dl>
 	</div>
     </div>
-					
+	 -->				
 </div>
 
 <footer class="panel footer">
@@ -427,7 +546,6 @@ if (isset($_SESSION['netid']))
         </div>
     </div>
 </footer>
-</div>
         <script>
         /*
         var xhr;
@@ -451,22 +569,7 @@ if (isset($_SESSION['netid']))
         */
         </script>
 	    <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script>
-            $('#sidebar_toggle').click(function(){
-	           var content_position = $('#content').offset();
-		      if(content_position.left > 0){
-			     $('#content').not('#tag_button.relative').stop(true, true).removeClass('sidebar_open', 400, 'linear', function(){
-                    $('#sidebar_toggle').removeClass('open');
-			     });
-		      } else {
-
-			     var open_width = $('#sidebar').outerWidth();
-			     $('#content').not('#tag_button.relative').stop(true, true).addClass('sidebar_open', 400, 'linear', function(){
-				    $('#sidebar_toggle').addClass('open');
-			     });
-		      }
-	       });
-        </script>
+    
 	    <script src="dist/js/bootstrap.min.js"></script>
         <script src="js/chart/Chart.min.js"></script>
     </body>
