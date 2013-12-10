@@ -503,13 +503,13 @@ function addClass($semester, $classes)
 					</div>
 			</div>
 		</div>
-		<div id = "classbar" class="container">
+		<div id = "classbar" class="container" style="overflow-y:scroll;">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-2">
 					<h4>Course List</h4>
 				</div>
 			</div>
-			<div class="container" style="overflow-y:scroll;">
+			<div class="container" style="width:190px;">
 				<div class="courseListRow row">
 					<div class="col-md-12">
 						Com S 229
@@ -523,6 +523,86 @@ function addClass($semester, $classes)
 				<div class="courseListRow row">
 					<div class="col-md-12">
 						SE 329
+					</div>
+				</div>
+				<div class="courseListRow row">
+					<div class="col-md-12">
+						Com S 228
+					</div>
+				</div>
+				<div class="courseListRow row">
+					<div class="col-md-12">
+						Com S 228
+					</div>
+				</div>
+				<div class="courseListRow row">
+					<div class="col-md-12">
+						Com S 228
+					</div>
+				</div>
+				<div class="courseListRow row">
+					<div class="col-md-12">
+						Com S 228
+					</div>
+				</div>
+				<div class="courseListRow row">
+					<div class="col-md-12">
+						Com S 228
+					</div>
+				</div>
+				<div class="courseListRow row">
+					<div class="col-md-12">
+						Com S 228
+					</div>
+				</div>
+				<div class="courseListRow row">
+					<div class="col-md-12">
+						Com S 228
+					</div>
+				</div>
+				<div class="courseListRow row">
+					<div class="col-md-12">
+						Com S 228
+					</div>
+				</div>
+				<div class="courseListRow row">
+					<div class="col-md-12">
+						Com S 228
+					</div>
+				</div>
+				<div class="courseListRow row">
+					<div class="col-md-12">
+						Com S 228
+					</div>
+				</div>
+				<div class="courseListRow row">
+					<div class="col-md-12">
+						Com S 228
+					</div>
+				</div>
+				<div class="courseListRow row">
+					<div class="col-md-12">
+						Com S 228
+					</div>
+				</div>
+				<div class="courseListRow row">
+					<div class="col-md-12">
+						Com S 228
+					</div>
+				</div>
+				<div class="courseListRow row">
+					<div class="col-md-12">
+						Com S 228
+					</div>
+				</div>
+				<div class="courseListRow row">
+					<div class="col-md-12">
+						Com S 228
+					</div>
+				</div>
+				<div class="courseListRow row">
+					<div class="col-md-12">
+						Com S 228
 					</div>
 				</div>
 				<div class="courseListRow row">
