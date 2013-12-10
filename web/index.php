@@ -458,13 +458,6 @@ function addClass($semester, $classes)
 						<p class="semesterHeaderTitle" id="semester1">Fall 2010</p>
 					</div>
 					<div class="classes col-md-10">
-						<div class="course" >
-							<div class="courseClose">
-							X
-							</div>
-							<p><b>Com S 229</b></p>
-							<p>3 cr.</p>
-						</div>
 					</div>
 					<div class="col-xs-1" style="width: 33px;">
 						<button type="button" class="addClass addIcon btn btn-default btn-sm">
@@ -474,7 +467,7 @@ function addClass($semester, $classes)
 			</div>
 			<div class = "semester row">
 					<div class="semesterHeader col-md-1">
-						<p class="semesterHeaderTitle" id="semester1">Spring 2010</p>
+						<p class="semesterHeaderTitle" id="semester1">Spring 2011</p>
 					</div>
 					<div class="classes col-md-10">
 					</div>
@@ -486,7 +479,7 @@ function addClass($semester, $classes)
 			</div>
 			<div class = "semester row">
 					<div class="semesterHeader col-md-1">
-						<p class="semesterHeaderTitle" id="semester1">Fall 2010</p>
+						<p class="semesterHeaderTitle" id="semester1">Fall 2011</p>
 					</div>
 					<div class="classes col-md-10">
 					</div>
@@ -498,7 +491,55 @@ function addClass($semester, $classes)
 			</div>
 			<div class = "semester row">
 					<div class="semesterHeader col-md-1">
-						<p class="semesterHeaderTitle" id="semester1">Fall 2010</p>
+						<p class="semesterHeaderTitle" id="semester1">Spring 2012</p>
+					</div>
+					<div class="classes col-md-10">
+					</div>
+					<div class="col-xs-1" style="width: 33px;">
+						<button type="button" class="addClass addIcon btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</div>
+			</div>
+			<div class = "semester row">
+					<div class="semesterHeader col-md-1">
+						<p class="semesterHeaderTitle" id="semester1">Fall 2012</p>
+					</div>
+					<div class="classes col-md-10">
+					</div>
+					<div class="col-xs-1" style="width: 33px;">
+						<button type="button" class="addClass addIcon btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</div>
+			</div>
+			<div class = "semester row">
+					<div class="semesterHeader col-md-1">
+						<p class="semesterHeaderTitle" id="semester1">Spring 2013</p>
+					</div>
+					<div class="classes col-md-10">
+					</div>
+					<div class="col-xs-1" style="width: 33px;">
+						<button type="button" class="addClass addIcon btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</div>
+			</div>
+			<div class = "semester row">
+					<div class="semesterHeader col-md-1">
+						<p class="semesterHeaderTitle" id="semester1">Fall 2013</p>
+					</div>
+					<div class="classes col-md-10">
+					</div>
+					<div class="col-xs-1" style="width: 33px;">
+						<button type="button" class="addClass addIcon btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</div>
+			</div>
+			<div class = "semester row">
+					<div class="semesterHeader col-md-1">
+						<p class="semesterHeaderTitle" id="semester1">Spring 2014</p>
 					</div>
 					<div class="classes col-md-10">
 					</div>
