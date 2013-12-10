@@ -26,31 +26,6 @@ function addClass($semester, $classes, $netid, $database)
 			$order--;
 			break;
 	}
-	mvar_dump($order);
-	// switch($semester[0])
-	// {
-	// 	case 'f':
-	// 		if(strcmp($start_sem['start_semester'], $semester[0]) == 0)
-	// 		{
-	// 			$order += $order;
-	// 		}
-	// 		else
-	// 		{
-	// 			$order += $order + 1;
-	// 		}
-	// 		break;
-	// 	case 's':
-	// 		if(strcmp($start_sem['start_semester'], $semester[0]) == 0)
-	// 		{
-	// 			$order += $order + 1;
-	// 		}
-	// 		else
-	// 		{
-	// 			$order += $order == 1 ? 0 : $order;
-	// 		}
-	// 		break;
-	// }
-	// mvar_dump($order);
 
 	// Get semesterid
 	$select_sem = $database->prepare("SELECT semesterid FROM semester WHERE netid = ? AND `order` = ?");

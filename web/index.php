@@ -11,6 +11,10 @@ if (isset($_SESSION['netid']))
 {
 	$database = dbInit_SQLite();
 
+	$select_stu = $database->prepare("SELECT start_semester, start_year FROM student WHERE netid = ?");
+	$select_stu->execute(array($netid));
+	$semester = $select_stu->fetch();
+
 	$stmt_sem_1 = $database->prepare("SELECT semesterid, completed FROM semester WHERE netid = ?");
 	$params1 = array($netid); 
 
@@ -259,9 +263,23 @@ if (isset($_SESSION['netid']))
 <div class = "schedule">
 	<span>
 		<div id="allSemesters" class="container">
-			<div class = "semester row">
+			<?php
+			$flag = false;
+			$start = 'Spring';
+			$end = 'Fall';
+			$sem = substr(trim(strtolower($semester[0])),0,1);
+			if(strcmp($sem, 'f') == 0)
+			{
+				$flag = true;
+				$start = 'Fall';
+				$end = 'Spring';
+			}
+			$year = $semester[1];
+			for($i = 0; $i < 8; $i++)
+			{
+				echo '<div class = "semester row">
 					<div class="semesterHeader col-md-1">
-						<p class="semesterHeaderTitle" id="semester1">Fall 2010</p>
+						<p class="semesterHeaderTitle" id="semester1">'.$start . ' ' . $year . '</p>
 					</div>
 					<div class="classes col-md-10">
 					</div>
@@ -270,91 +288,15 @@ if (isset($_SESSION['netid']))
 							<span class="glyphicon glyphicon-plus"></span>
 						</button>
 					</div>
-			</div>
-			<div class = "semester row">
-					<div class="semesterHeader col-md-1">
-						<p class="semesterHeaderTitle" id="semester1">Spring 2011</p>
-					</div>
-					<div class="classes col-md-10">
-					</div>
-					<div class="col-xs-1" style="width: 33px;">
-						<button type="button" class="addClass addIcon btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-plus"></span>
-						</button>
-					</div>
-			</div>
-			<div class = "semester row">
-					<div class="semesterHeader col-md-1">
-						<p class="semesterHeaderTitle" id="semester1">Fall 2011</p>
-					</div>
-					<div class="classes col-md-10">
-					</div>
-					<div class="col-xs-1" style="width: 33px;">
-						<button type="button" class="addClass addIcon btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-plus"></span>
-						</button>
-					</div>
-			</div>
-			<div class = "semester row">
-					<div class="semesterHeader col-md-1">
-						<p class="semesterHeaderTitle" id="semester1">Spring 2012</p>
-					</div>
-					<div class="classes col-md-10">
-					</div>
-					<div class="col-xs-1" style="width: 33px;">
-						<button type="button" class="addClass addIcon btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-plus"></span>
-						</button>
-					</div>
-			</div>
-			<div class = "semester row">
-					<div class="semesterHeader col-md-1">
-						<p class="semesterHeaderTitle" id="semester1">Fall 2012</p>
-					</div>
-					<div class="classes col-md-10">
-					</div>
-					<div class="col-xs-1" style="width: 33px;">
-						<button type="button" class="addClass addIcon btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-plus"></span>
-						</button>
-					</div>
-			</div>
-			<div class = "semester row">
-					<div class="semesterHeader col-md-1">
-						<p class="semesterHeaderTitle" id="semester1">Spring 2013</p>
-					</div>
-					<div class="classes col-md-10">
-					</div>
-					<div class="col-xs-1" style="width: 33px;">
-						<button type="button" class="addClass addIcon btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-plus"></span>
-						</button>
-					</div>
-			</div>
-			<div class = "semester row">
-					<div class="semesterHeader col-md-1">
-						<p class="semesterHeaderTitle" id="semester1">Fall 2013</p>
-					</div>
-					<div class="classes col-md-10">
-					</div>
-					<div class="col-xs-1" style="width: 33px;">
-						<button type="button" class="addClass addIcon btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-plus"></span>
-						</button>
-					</div>
-			</div>
-			<div class = "semester row">
-					<div class="semesterHeader col-md-1">
-						<p class="semesterHeaderTitle" id="semester1">Spring 2014</p>
-					</div>
-					<div class="classes col-md-10">
-					</div>
-					<div class="col-xs-1" style="width: 33px;">
-						<button type="button" class="addClass addIcon btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-plus"></span>
-						</button>
-					</div>
-			</div>
+			</div>';
+				if($flag)
+					$year++;
+				$flag = !$flag;
+				$tmp = $start;
+				$start = $end;
+				$end = $tmp;
+			}
+			?>
 		</div>
 		<div id = "classbar" class="container" style="overflow-y:scroll;">
 			<div class="row">
