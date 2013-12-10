@@ -312,12 +312,14 @@ function addClass($semester, $classes)
 		
 		$("#courseListOk").click(function(){
 
+			var courseArr = [];
 			$(".courseListRow").each(function(i){
 				
 				var course = $(this).children(":first");
 				var className = course.text().trim();
 
 				if(course.parent().css("border-color") != 'rgb(255, 231, 191)'){
+					courseArr.push(className);
 					semesterToAddTo.find(".classes").append("<div class=\"course appendedCourse\"><div class=\"courseClose\">X</div><p><b>" + className + "</b></p><p>3 cr.</p></div>");
 				}
 			});
@@ -329,6 +331,11 @@ function addClass($semester, $classes)
 
 			$(".courseClose").click(function(){
 				$(this).parent().remove();
+			});
+
+			$.get('addClass.php', {
+				semester: semesterToAddTo.children(':first').children(':first').text(), 
+				classes: courseArr
 			});
 
 			//Haytham
