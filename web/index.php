@@ -612,7 +612,7 @@ function addClass($semester, $classes)
 				</div>
 			</div>
 			<div class="container">
-				<button id="courseListOk" type="button">
+				<button id="courseListOk" type="button" class="btn btn-default" type="button">
 					OK
 				</button>
 			</div>

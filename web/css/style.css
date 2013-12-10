@@ -216,7 +216,7 @@ background-color: #FDC82F;
 .semester{
 	width: 100%;
 	height: 160px;
-	background-color: #FFEDB5;
+	background-color: #822433;
 	border: solid;
 	border-width: thin;
 	border-color: #FFDD75;
@@ -236,12 +236,14 @@ background-color: #FDC82F;
 
 .semesterHeader{
 	border: solid;
+    border-color: white;
 	border-width: thin;
 	text-align: center;
 	border-radius: 15px;
 	padding: 15px;
 }
 .semesterHeaderTitle{
+    color: white;
 	margin-top: 45%;
 	vertical-align: middle;
 	height: 40px;
@@ -267,7 +269,7 @@ button.addIcon{
 	display: inline-block;
 	width: 110px;
 	height: 120px;
-	background-color: #A7ED93 !important;
+	background-color: #FDC82F !important;
 	border: solid;
 	border-width: thin;
 	border-radius: 10px;
@@ -305,7 +307,7 @@ button.addIcon{
 	top: 270px;
 	width: 200px;
 	height: 500px;
-	background-color: #FFFFBF;
+	background-color: #FADA63;
 /* 	border: solid; */
 /* 	border-width: thin; */
 	border-radius: 10px;
