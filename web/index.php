@@ -396,7 +396,7 @@ function addClass($semester, $classes)
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['netid']; ?> <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="profile.html">Profile</a></li>
+          <li><a href="profile.php">Profile</a></li>
           <li><a href="#">Social</a></li>
           <li class="divider"></li>
           <li><a href="logout.php">Logout</a></li>
@@ -579,7 +579,6 @@ function addClass($semester, $classes)
 	    <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script>
             
-            // popover demo
             $(function(){
                 $('.menu').click(function(){
                     var title = $(this).attr( "title" );
