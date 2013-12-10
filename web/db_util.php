@@ -85,4 +85,10 @@ function get_majors()
 	return $res;
 }
 
+function mvar_dump($input)
+{
+	echo '<pre>';
+	var_dump($input);
+	echo '</pre>';
+}
 ?>

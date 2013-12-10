@@ -12,32 +12,45 @@ function addClass($semester, $classes, $netid, $database)
 	$start_sem = $select_student->fetch();
 
 	$semester = split(' ', $semester);
-	$order = $semester[1] - $start_sem['start_year'];
+	$order = ($semester[1] - $start_sem['start_year']) * 2;
 	$semester[0] = substr(trim(strtolower($semester[0])),0,1);
 	$start_sem['start_semester'] = substr(trim(strtolower($start_sem['start_semester'])),0,1);
-	switch($semester[0])
+	var_dump(strcmp($semester[0], $start_sem['start_semester']), $order);
+	$test = strcmp($semester[0], $start_sem['start_semester']);
+	switch($test > 0)
 	{
-		case 'f':
-			if(strcmp($start_sem['start_semester'], $semester[0]) == 0)
-			{
-				$order += $order;
-			}
-			else
-			{
-				$order += $order + 1;
-			}
+		case false:
+			$order += $test == 0 ? 0 : 1;
 			break;
-		case 's':
-			if(strcmp($start_sem['start_semester'], $semester[0]) == 0)
-			{
-				$order += $order + 1;
-			}
-			else
-			{
-				$order += $order;
-			}
+		case true:
+			$order--;
 			break;
 	}
+	mvar_dump($order);
+	// switch($semester[0])
+	// {
+	// 	case 'f':
+	// 		if(strcmp($start_sem['start_semester'], $semester[0]) == 0)
+	// 		{
+	// 			$order += $order;
+	// 		}
+	// 		else
+	// 		{
+	// 			$order += $order + 1;
+	// 		}
+	// 		break;
+	// 	case 's':
+	// 		if(strcmp($start_sem['start_semester'], $semester[0]) == 0)
+	// 		{
+	// 			$order += $order + 1;
+	// 		}
+	// 		else
+	// 		{
+	// 			$order += $order == 1 ? 0 : $order;
+	// 		}
+	// 		break;
+	// }
+	// mvar_dump($order);
 
 	// Get semesterid
 	$select_sem = $database->prepare("SELECT semesterid FROM semester WHERE netid = ? AND `order` = ?");

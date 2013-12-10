@@ -60,49 +60,24 @@ if (isset($_SESSION['netid']))
 			   $("#courseList").append("<div class=\"courseListRow row\"><div class=\"col-md-12\">" + courses[i][0] + "</div></div>");
            }
         });
-
-        $(function() {
-		  $( "#accordion" ).accordion();
-		});
-		
-		$(function() {
-		  $( "#tabs" ).tabs();
-		});
-		
-		
-		var lastScrollTop = 0;
-		var itemIndex = 0;		
-		$(window).scroll(function(event){
-		   var st = $(this).scrollTop();
-		   if ((st > lastScrollTop) && (itemIndex > 1)){
-		       itemIndex = itemIndex - 1;
-		   } else {
-		      itemIndex = itemIndex + 1;
-		   }
-		   itemIndex = parseInt(itemIndex, 10);   
-		   $("#accordion").accordion('option','active', (itemIndex));
-		   lastScrollTop = st;
-		});
-		
 		
 	$(function() {
 	
 		var semcourses = <?php echo json_encode($sem_courses); ?>;
 		// 1 loop for each of 8 semesters, with each loop appending courses from the corresponding course array from php
-		for(var j = 0; j < 8; j++)
-		{
+		$("#allSemesters > .semester.row").each(function(j) {
 			var courses = semcourses[j];
 			for (var i = 0; i < courses.length; i++) {
 				var course = courses[i];
 				var id = j + 1;
 				if (course.credits == 0)
 				{
-					$("#sem" + id + " ul").append("<li class=\"elective\"><span>" + course[0] + "</span><span class=\"creds\">" + course[1] + "</span></li>");
+					$(this).find(".classes").append("<div class=\"course appendedCourse elective\"><div class=\"courseClose\">X</div><p><b>" + course[0] + "</b></p><p>" + course[1] + " cr.</p></div>");
 				}
 				else
-					$("#sem" + id + " ul").append("<li><span>" + course[0] + "</span><span class=\"creds\">" + course[1] + "</span></li>");
+					$(this).find(".classes").append("<div class=\"course appendedCourse\"><div class=\"courseClose\">X</div><p><b>" + course[0] + "</b></p><p>" + course[1] + " cr.</p></div>");
 			}
-		}
+		});
 		
 		
 		
@@ -117,161 +92,7 @@ if (isset($_SESSION['netid']))
 	            top: -1,
 	            left: 0,
 	            display: "none" // info cells are just kicked off the page with CSS (for accessibility)
-	        });
-	    
-	    // clicking image of inactive column just opens column, doesn't go to link   
-	    $("#wrap").delegate("a.image","click", function(e) { 
-	        
-	        if ( !$(this).parent().hasClass("curCol") ) {         
-	            e.preventDefault(); 
-	            $(this).next().find('dt:first').click(); 
-	        } 
-	        
-	    });
-	    var $activeelec;
-		// Bind click to class boxes, with a special case for electives to pop in the elective chooser script
-		$("#wrap").delegate(".semesterBlock li", "click", function() {
-			var cla = $(this).attr("class");
-			if (cla == "elective") {
-				$activeelec = $(this);			
-				var position = $(this).offset();
-				var left = position.left + 107;
-				$("#electivedialog").css({
-					top: position.top+"px",
-					left: left+"px"
-				}).animate({opacity:1,left: "+=30px"}, 100);
-				$("#electivedialog li").bind("click", function() {
-					var ctext = $(this).text().split("::");
-					$activeelec.children().eq(0).text(ctext[0]);
-					$activeelec.children().eq(1).text("Credits: " + ctext[1].charAt(1));
-					$("#electivedialog").animate({opacity:0, left: "-=30px"}, 50);
-					setTimeout(function() {
-						$("#electivedialog").css({
-							top: "0px",
-							left: "0px"
-						});
-					}, 100);
-					$("#electivedialog li").unbind();
-				});
-				setTimeout(function() {
-					$("#electivedialog").bind("mouseenter", function() {
-						$("#electivedialog").bind("mouseleave", function() {
-							$("#electivedialog").animate({opacity:0, left: "-=30px"}, 50);
-							setTimeout(function() {
-								$("#electivedialog").css({
-									top: "0px",
-									left: "0px"
-								});
-							}, 100);
-							$("#electivedialog").unbind();
-							$("#electivedialog li").unbind();
-						});
-					});
-				}, 100);
-			}
-			else if (cla != "selected" && cla != "complete" && cla != "isCompleted")
-				$(this).addClass("selected");
-			else if (cla == "selected")
-			{
-				$(this).removeClass("selected");
-			}
-			return false;
-		});
-		
-	    // clicking on titles does stuff
-	    $("#wrap").delegate("dt", "click", function() {
-	        
-	        // cache this, as always, is good form
-	        $el = $(this);
-	        $("#electivedialog").animate({opacity:0, left: "-=30px"}, 50);
-			setTimeout(function() {
-				$("#electivedialog").css({
-					top: "0px",
-					left: "0px"
-				});
-			}, 100);
-	        // if this is already the active cell, don't do anything
-	        if (!$el.hasClass("current")) {
-	        
-	            $parentWrap = $el.parent().parent();
-	            $otherWraps = $(".info-col").not($parentWrap);
-	            
-	            // remove current cell from selection of all cells
-	            $allTitles = $("dt").not(this);
-	            
-	            // close all info cells
-	            $allCells.slideUp();
-	            
-	            // return all titles (except current one) to normal size
-	            $allTitles.animate({
-	                fontSize: "14px",
-	                paddingTop: 5,
-	                paddingRight: 5,
-	                paddingBottom: 5,
-	                paddingLeft: 5
-	            });
-	            
-	            // animate current title to larger size            
-	            $el.animate({
-	                "font-size": "20px",
-	                paddingTop: 10,
-	                paddingRight: 5,
-	                paddingBottom: 0,
-	                paddingLeft: 10
-	            }).next().slideDown();
-	            
-	            // make the current column the large size
-	            $parentWrap.animate({
-	                width: 900
-	            }).addClass("curCol");
-	            
-	            // make other columns the small size
-	            $otherWraps.animate({
-	                width: 140
-	            }).removeClass("curCol");
-	            
-	            // make sure the correct column is current
-	            $allTitles.removeClass("current");
-	            $el.addClass("current");  
-	        
-	        }
-	        
-	    });
-		$("#electivedialog").load("electivechooser.php");
-		//for (var i=0; i<5; i++;) {
-		//}
-		
-	    $("#starter").trigger("click");
-
-		//Checks semester completed checkbox.  Sends AJAX request to update database
-	    $(".isCompleted div").click(function(){
-			var isChecked = $(this).find('#completed_id').prop('checked');
-			if(isChecked){
-				$(this).find('#completed_id').prop('checked', false);
-				$.post("complete_semester.php",
-						  {
-						  		//TODO - get semester ID for input.  Take from id field in semesterBlock
-						  		semester_id:"",
-							  	is_complete:"false"
-						  },
-						  function(data,status){
-						  });
-			}
-			else{
-				$(this).find('#completed_id').prop('checked', true);
-				$.post("complete_semester.php",
-						  {
-						  		semester_id:"",
-							  	is_complete:"true"
-						  },
-						  function(data,status){
-						  });
-			}
-			
-			
-		});
-
-		
+	        });		
 		
 		$(".addClass").click(function(){
 			semesterToAddTo = $(this).parent().parent();
