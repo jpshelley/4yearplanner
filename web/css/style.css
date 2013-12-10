@@ -323,6 +323,13 @@ button.addIcon{
 	background-color: #FFE7BF;
 }
 
+#courseListOk{
+	visibility: hidden;
+	position: absolute;
+	bottom: 160px;
+	right: 220px;
+}
+
 #colRight{
 	width: 100px;
 	height: 100px;

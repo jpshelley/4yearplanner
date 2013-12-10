@@ -76,6 +76,7 @@ function addClass($semester, $classes)
            var courses = courseArr[0];
            for(var i = 0; i < courses.length; i++){
                $("#sidebar_inner").append("<a class='menu' href='#'  title=" + courses[i][1]+ ">" + courses[i][0] + "</a>");
+			   $("#courseList").append("<div class=\"courseListRow row\"><div class=\"col-md-12\">" + courses[i][0] + "</div></div>");
            }
         });
 
@@ -198,6 +199,7 @@ function addClass($semester, $classes)
 		
 		//Haytham
 		$(".course").click( function(){
+			
 			var coursename = $('p:first', this).text();
 			var netid = "<?php echo $_SESSION['netid']; ?>";
 			
@@ -210,6 +212,8 @@ function addClass($semester, $classes)
 				//$.post('complete_course.php', {course_name: "Com S 229", net_id: "jbravo", complete: "true"});
 				$.post('complete_course.php', {course_name: coursename, net_id: netid, complete: "true"});
 			}
+			
+		
 		});
 		
 	    // clicking on titles does stuff
@@ -310,6 +314,7 @@ function addClass($semester, $classes)
 		$(".addClass").click(function(){
 			semesterToAddTo = $(this).parent().parent();
 			$("#classbar").css("visibility", "visible");
+			$("#courseListOk").css("visibility", "visible");
 			$("#allSemesters").animate({width:"950px"},{duration: 400, queue: false });
 		});
 		
@@ -338,12 +343,13 @@ function addClass($semester, $classes)
 
 			$(".courseListRow").css("border", "#FFE7BF solid 1px");
 			$("#classbar").css("visibility", "hidden");
+			$("#courseListOk").css("visibility", "hidden");
 			$("#allSemesters").animate({width:"1170px"},{duration: 400, queue: false });
 
 			$(".courseClose").click(function(){
 				$(this).parent().remove();
 			});
-			
+
 			//Haytham
 			$(".course").click( function(){
 				var coursename = $('p:first', this).text();
@@ -359,7 +365,7 @@ function addClass($semester, $classes)
 					$.post('complete_course.php', {course_name: coursename, net_id: netid, complete: "true"});
 				}
 			});
-			
+						
 		});
 
 		$(".courseClose").click(function(){
@@ -396,7 +402,7 @@ function addClass($semester, $classes)
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['netid']; ?> <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="profile.php">Profile</a></li>
+          <li><a href="profile.html">Profile</a></li>
           <li><a href="#">Social</a></li>
           <li class="divider"></li>
           <li><a href="logout.php">Logout</a></li>
@@ -509,114 +515,13 @@ function addClass($semester, $classes)
 					<h4>Course List</h4>
 				</div>
 			</div>
-			<div class="container" style="width:190px;">
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 229
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 309
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						SE 329
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 228
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 228
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 228
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 228
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 228
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 228
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 228
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 228
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 228
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 228
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 228
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 228
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 228
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 228
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 228
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 228
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 228
-					</div>
-				</div>
-			</div>
-			<div class="container">
-				<button id="courseListOk" type="button" class="btn btn-default" type="button">
-					OK
-				</button>
+			<div id="courseList" class="container" style="width:190px;">
+				
 			</div>
 		</div>
+		<button id="courseListOk" type="button">
+					OK
+		</button>
 	</span>
 </div>
 
@@ -659,6 +564,7 @@ function addClass($semester, $classes)
 	    <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script>
             
+            // popover demo
             $(function(){
                 $('.menu').click(function(){
                     var title = $(this).attr( "title" );
