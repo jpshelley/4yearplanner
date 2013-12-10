@@ -556,7 +556,7 @@ function addClass($semester, $classes)
 					<h4>Course List</h4>
 				</div>
 			</div>
-			<div id="courseList" class="container" style="width:190px;">
+			<div id="courseList" class="container" style="width:150px;">
 				
 			</div>
 		</div>
