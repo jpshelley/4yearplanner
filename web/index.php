@@ -76,6 +76,7 @@ function addClass($semester, $classes)
            var courses = courseArr[0];
            for(var i = 0; i < courses.length; i++){
                $("#sidebar_inner").append("<a class='menu' href='#'  title=" + courses[i][1]+ ">" + courses[i][0] + "</a>");
+			   $("#courseList").append("<div class=\"courseListRow row\"><div class=\"col-md-12\">" + courses[i][0] + "</div></div>");
            }
         });
 
@@ -196,22 +197,6 @@ function addClass($semester, $classes)
 			return false;
 		});
 		
-		//Haytham
-		$(".course").click( function(){
-			var coursename = $('p:first', this).text();
-			var netid = "<?php echo $_SESSION['netid']; ?>";
-			
-			if($(this).hasClass("courseComplete")) {
-				$(this).removeClass("courseComplete");
-				//$.post('complete_course.php', {course_name: "Com S 229", net_id: "jbravo", complete: "false"});
-				$.post('complete_course.php', {course_name: coursename, net_id: netid, complete: "false"});
-			} else {
-				$(this).addClass("courseComplete");
-				//$.post('complete_course.php', {course_name: "Com S 229", net_id: "jbravo", complete: "true"});
-				$.post('complete_course.php', {course_name: coursename, net_id: netid, complete: "true"});
-			}
-		});
-		
 	    // clicking on titles does stuff
 	    $("#wrap").delegate("dt", "click", function() {
 	        
@@ -310,6 +295,7 @@ function addClass($semester, $classes)
 		$(".addClass").click(function(){
 			semesterToAddTo = $(this).parent().parent();
 			$("#classbar").css("visibility", "visible");
+			$("#courseListOk").css("visibility", "visible");
 			$("#allSemesters").animate({width:"950px"},{duration: 400, queue: false });
 		});
 		
@@ -332,20 +318,21 @@ function addClass($semester, $classes)
 				var className = course.text().trim();
 
 				if(course.parent().css("border-color") != 'rgb(255, 231, 191)'){
-					semesterToAddTo.find(".classes").append("<div class=\"course\"><div class=\"courseClose\">X</div><p><b>" + className + "</b></p><p>3 cr.</p></div>");
+					semesterToAddTo.find(".classes").append("<div class=\"course appendedCourse\"><div class=\"courseClose\">X</div><p><b>" + className + "</b></p><p>3 cr.</p></div>");
 				}
 			});
 
 			$(".courseListRow").css("border", "#FFE7BF solid 1px");
 			$("#classbar").css("visibility", "hidden");
+			$("#courseListOk").css("visibility", "hidden");
 			$("#allSemesters").animate({width:"1170px"},{duration: 400, queue: false });
 
 			$(".courseClose").click(function(){
 				$(this).parent().remove();
 			});
-			
+
 			//Haytham
-			$(".course").click( function(){
+			$(".appendedCourse").click( function(){
 				var coursename = $('p:first', this).text();
 				var netid = "<?php echo $_SESSION['netid']; ?>";
 			
@@ -359,11 +346,27 @@ function addClass($semester, $classes)
 					$.post('complete_course.php', {course_name: coursename, net_id: netid, complete: "true"});
 				}
 			});
-			
+						
 		});
 
 		$(".courseClose").click(function(){
 			$(this).parent().remove();
+		});
+		
+		//Haytham
+		$(".course").click( function(){
+			var coursename = $('p:first', this).text();
+			var netid = "<?php echo $_SESSION['netid']; ?>";
+			
+			if($(this).hasClass("courseComplete")) {
+				$(this).removeClass("courseComplete");
+				//$.post('complete_course.php', {course_name: "Com S 229", net_id: "jbravo", complete: "false"});
+				$.post('complete_course.php', {course_name: coursename, net_id: netid, complete: "false"});
+			} else {
+				$(this).addClass("courseComplete");
+				//$.post('complete_course.php', {course_name: "Com S 229", net_id: "jbravo", complete: "true"});
+				$.post('complete_course.php', {course_name: coursename, net_id: netid, complete: "true"});
+			}
 		});
 	    
 	});
@@ -396,7 +399,7 @@ function addClass($semester, $classes)
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['netid']; ?> <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="profile.php">Profile</a></li>
+          <li><a href="profile.html">Profile</a></li>
           <li><a href="#">Social</a></li>
           <li class="divider"></li>
           <li><a href="logout.php">Logout</a></li>
@@ -452,13 +455,6 @@ function addClass($semester, $classes)
 						<p class="semesterHeaderTitle" id="semester1">Fall 2010</p>
 					</div>
 					<div class="classes col-md-10">
-						<div class="course" >
-							<div class="courseClose">
-							X
-							</div>
-							<p><b>Com S 229</b></p>
-							<p>3 cr.</p>
-						</div>
 					</div>
 					<div class="col-xs-1" style="width: 33px;">
 						<button type="button" class="addClass addIcon btn btn-default btn-sm">
@@ -468,7 +464,7 @@ function addClass($semester, $classes)
 			</div>
 			<div class = "semester row">
 					<div class="semesterHeader col-md-1">
-						<p class="semesterHeaderTitle" id="semester1">Spring 2010</p>
+						<p class="semesterHeaderTitle" id="semester1">Spring 2011</p>
 					</div>
 					<div class="classes col-md-10">
 					</div>
@@ -480,7 +476,7 @@ function addClass($semester, $classes)
 			</div>
 			<div class = "semester row">
 					<div class="semesterHeader col-md-1">
-						<p class="semesterHeaderTitle" id="semester1">Fall 2010</p>
+						<p class="semesterHeaderTitle" id="semester1">Fall 2011</p>
 					</div>
 					<div class="classes col-md-10">
 					</div>
@@ -492,7 +488,55 @@ function addClass($semester, $classes)
 			</div>
 			<div class = "semester row">
 					<div class="semesterHeader col-md-1">
-						<p class="semesterHeaderTitle" id="semester1">Fall 2010</p>
+						<p class="semesterHeaderTitle" id="semester1">Spring 2012</p>
+					</div>
+					<div class="classes col-md-10">
+					</div>
+					<div class="col-xs-1" style="width: 33px;">
+						<button type="button" class="addClass addIcon btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</div>
+			</div>
+			<div class = "semester row">
+					<div class="semesterHeader col-md-1">
+						<p class="semesterHeaderTitle" id="semester1">Fall 2012</p>
+					</div>
+					<div class="classes col-md-10">
+					</div>
+					<div class="col-xs-1" style="width: 33px;">
+						<button type="button" class="addClass addIcon btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</div>
+			</div>
+			<div class = "semester row">
+					<div class="semesterHeader col-md-1">
+						<p class="semesterHeaderTitle" id="semester1">Spring 2013</p>
+					</div>
+					<div class="classes col-md-10">
+					</div>
+					<div class="col-xs-1" style="width: 33px;">
+						<button type="button" class="addClass addIcon btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</div>
+			</div>
+			<div class = "semester row">
+					<div class="semesterHeader col-md-1">
+						<p class="semesterHeaderTitle" id="semester1">Fall 2013</p>
+					</div>
+					<div class="classes col-md-10">
+					</div>
+					<div class="col-xs-1" style="width: 33px;">
+						<button type="button" class="addClass addIcon btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</div>
+			</div>
+			<div class = "semester row">
+					<div class="semesterHeader col-md-1">
+						<p class="semesterHeaderTitle" id="semester1">Spring 2014</p>
 					</div>
 					<div class="classes col-md-10">
 					</div>
@@ -503,40 +547,19 @@ function addClass($semester, $classes)
 					</div>
 			</div>
 		</div>
-		<div id = "classbar" class="container">
+		<div id = "classbar" class="container" style="overflow-y:scroll;">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-2">
 					<h4>Course List</h4>
 				</div>
 			</div>
-			<div class="container" style="overflow-y:scroll;">
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 229
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 309
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						SE 329
-					</div>
-				</div>
-				<div class="courseListRow row">
-					<div class="col-md-12">
-						Com S 228
-					</div>
-				</div>
-			</div>
-			<div class="container">
-				<button id="courseListOk" type="button">
-					OK
-				</button>
+			<div id="courseList" class="container" style="width:150px;">
+				
 			</div>
 		</div>
+		<button id="courseListOk" type="button">
+					OK
+		</button>
 	</span>
 </div>
 
@@ -579,6 +602,7 @@ function addClass($semester, $classes)
 	    <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script>
             
+            // popover demo
             $(function(){
                 $('.menu').click(function(){
                     var title = $(this).attr( "title" );
