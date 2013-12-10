@@ -399,8 +399,8 @@ function addClass($semester, $classes)
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['netid']; ?> <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="profile.html">Profile</a></li>
-          <li><a href="#">Social</a></li>
+          <li><a href="profile.php">Profile</a></li>
+          <li><a href="social.php">Social</a></li>
           <li class="divider"></li>
           <li><a href="logout.php">Logout</a></li>
         </ul>
