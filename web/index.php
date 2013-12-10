@@ -381,9 +381,9 @@ function addClass($semester, $classes)
     <ul class="nav navbar-nav navbar-right">
       <li><a href="http://www.iastate.edu">Iowa State</a></li>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">User <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['netid']; ?> <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Profile</a></li>
+          <li><a href="profile.html">Profile</a></li>
           <li><a href="#">Social</a></li>
           <li class="divider"></li>
           <li><a href="logout.php">Logout</a></li>
