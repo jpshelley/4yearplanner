@@ -198,7 +198,6 @@ function addClass($semester, $classes)
 		
 		//Haytham
 		$(".course").click( function(){
-			
 			var coursename = $('p:first', this).text();
 			var netid = "<?php echo $_SESSION['netid']; ?>";
 			
@@ -211,8 +210,6 @@ function addClass($semester, $classes)
 				//$.post('complete_course.php', {course_name: "Com S 229", net_id: "jbravo", complete: "true"});
 				$.post('complete_course.php', {course_name: coursename, net_id: netid, complete: "true"});
 			}
-			
-		
 		});
 		
 	    // clicking on titles does stuff
@@ -347,6 +344,22 @@ function addClass($semester, $classes)
 				$(this).parent().remove();
 			});
 			
+			//Haytham
+			$(".course").click( function(){
+				var coursename = $('p:first', this).text();
+				var netid = "<?php echo $_SESSION['netid']; ?>";
+			
+				if($(this).hasClass("courseComplete")) {
+					$(this).removeClass("courseComplete");
+					//$.post('complete_course.php', {course_name: "Com S 229", net_id: "jbravo", complete: "false"});
+					$.post('complete_course.php', {course_name: coursename, net_id: netid, complete: "false"});
+				} else {
+					$(this).addClass("courseComplete");
+					//$.post('complete_course.php', {course_name: "Com S 229", net_id: "jbravo", complete: "true"});
+					$.post('complete_course.php', {course_name: coursename, net_id: netid, complete: "true"});
+				}
+			});
+			
 		});
 
 		$(".courseClose").click(function(){
@@ -381,9 +394,9 @@ function addClass($semester, $classes)
     <ul class="nav navbar-nav navbar-right">
       <li><a href="http://www.iastate.edu">Iowa State</a></li>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">User <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['netid']; ?> <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Profile</a></li>
+          <li><a href="profile.php">Profile</a></li>
           <li><a href="#">Social</a></li>
           <li class="divider"></li>
           <li><a href="logout.php">Logout</a></li>
@@ -566,7 +579,6 @@ function addClass($semester, $classes)
 	    <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script>
             
-            // popover demo
             $(function(){
                 $('.menu').click(function(){
                     var title = $(this).attr( "title" );
