@@ -546,3 +546,13 @@ iframe {
     max-height: 525px;
 }
 
+/***** SOCIAL *****/
+
+.wrapper-facebook {
+    width: 500px;
+    height: 800px;
+    background-repeat:no-repeat;
+    align-content:center;
+    background-image: url("../img/");
+}
+
