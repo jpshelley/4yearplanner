@@ -299,6 +299,7 @@ button.addIcon{
 	position: absolute;
 	right: 5px;
 	top: 5px;
+	cursor: pointer;
 }
 
 #classbar{
@@ -321,6 +322,10 @@ button.addIcon{
 	border-radius: 10px;
 	border: #FFE7BF solid 1px;
 	background-color: #FFE7BF;
+}
+
+.courseListRow div{
+	cursor: pointer;
 }
 
 #courseListOk{
