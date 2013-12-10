@@ -329,10 +329,11 @@ button.addIcon{
 }
 
 #courseListOk{
+    width: 200px;
 	visibility: hidden;
 	position: absolute;
-	bottom: 420px;
-	right: 220px;
+	bottom: 410px;
+	right: 50px;
 }
 
 /*=================== Specific Elements ===================*/                      

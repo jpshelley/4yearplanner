@@ -544,10 +544,12 @@ if (isset($_SESSION['netid']))
 			<div id="courseList" class="container" style="width:150px;">
 				
 			</div>
+
 		</div>
-		<button id="courseListOk" type="button">
+            <button id="courseListOk" type="button" class="btn btn-default">
 					OK
-		</button>
+		    </button>
+
 	</span>
 </div>
 
