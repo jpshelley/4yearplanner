@@ -197,25 +197,6 @@ function addClass($semester, $classes)
 			return false;
 		});
 		
-		//Haytham
-		$(".course").click( function(){
-			
-			var coursename = $('p:first', this).text();
-			var netid = "<?php echo $_SESSION['netid']; ?>";
-			
-			if($(this).hasClass("courseComplete")) {
-				$(this).removeClass("courseComplete");
-				//$.post('complete_course.php', {course_name: "Com S 229", net_id: "jbravo", complete: "false"});
-				$.post('complete_course.php', {course_name: coursename, net_id: netid, complete: "false"});
-			} else {
-				$(this).addClass("courseComplete");
-				//$.post('complete_course.php', {course_name: "Com S 229", net_id: "jbravo", complete: "true"});
-				$.post('complete_course.php', {course_name: coursename, net_id: netid, complete: "true"});
-			}
-			
-		
-		});
-		
 	    // clicking on titles does stuff
 	    $("#wrap").delegate("dt", "click", function() {
 	        
@@ -337,7 +318,7 @@ function addClass($semester, $classes)
 				var className = course.text().trim();
 
 				if(course.parent().css("border-color") != 'rgb(255, 231, 191)'){
-					semesterToAddTo.find(".classes").append("<div class=\"course\"><div class=\"courseClose\">X</div><p><b>" + className + "</b></p><p>3 cr.</p></div>");
+					semesterToAddTo.find(".classes").append("<div class=\"course appendedCourse\"><div class=\"courseClose\">X</div><p><b>" + className + "</b></p><p>3 cr.</p></div>");
 				}
 			});
 
@@ -351,7 +332,7 @@ function addClass($semester, $classes)
 			});
 
 			//Haytham
-			$(".course").click( function(){
+			$(".appendedCourse").click( function(){
 				var coursename = $('p:first', this).text();
 				var netid = "<?php echo $_SESSION['netid']; ?>";
 			
@@ -370,6 +351,22 @@ function addClass($semester, $classes)
 
 		$(".courseClose").click(function(){
 			$(this).parent().remove();
+		});
+		
+		//Haytham
+		$(".course").click( function(){
+			var coursename = $('p:first', this).text();
+			var netid = "<?php echo $_SESSION['netid']; ?>";
+			
+			if($(this).hasClass("courseComplete")) {
+				$(this).removeClass("courseComplete");
+				//$.post('complete_course.php', {course_name: "Com S 229", net_id: "jbravo", complete: "false"});
+				$.post('complete_course.php', {course_name: coursename, net_id: netid, complete: "false"});
+			} else {
+				$(this).addClass("courseComplete");
+				//$.post('complete_course.php', {course_name: "Com S 229", net_id: "jbravo", complete: "true"});
+				$.post('complete_course.php', {course_name: coursename, net_id: netid, complete: "true"});
+			}
 		});
 	    
 	});
